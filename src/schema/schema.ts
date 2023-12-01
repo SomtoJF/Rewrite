@@ -1,5 +1,5 @@
 const typeDefs = `#graphql 
-# Define Your Schema Here
+# Replace this with your own type definitions
 type Name{
     name: String
 }
