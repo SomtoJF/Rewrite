@@ -3,10 +3,6 @@ import { ArticleInterface } from "./types/article.js";
 
 const articleSchema = new mongoose.Schema<ArticleInterface>(
 	{
-		_id: {
-			type: String,
-			required: true,
-		},
 		author_id: {
 			type: String,
 			required: true,
@@ -31,5 +27,5 @@ const articleSchema = new mongoose.Schema<ArticleInterface>(
 	{ timestamps: true }
 );
 
-const Account = mongoose.model("Account", articleSchema, "accounts");
-export default Account;
+const Article = mongoose.model("Article", articleSchema, "articles");
+export default Article;
