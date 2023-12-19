@@ -6,6 +6,7 @@ import getArticle from "./articles/getOneArticle.js";
 import getArticles from "./articles/getArticles.js";
 import createArticle from "./articles/createArticle.js";
 import getArticleAuthor from "./articles/getAuthor.js";
+import getAccountArticles from "./accounts/getAccountArticles.js";
 
 const resolvers = {
 	Query: {
@@ -13,7 +14,9 @@ const resolvers = {
 		article: getArticle,
 		articles: getArticles,
 	},
-	Account: {},
+	Account: {
+		articles: getAccountArticles,
+	},
 	Article: {
 		author: getArticleAuthor,
 	},
