@@ -15,6 +15,10 @@ const accountSchema = new mongoose.Schema<AccountInterface>(
 			type: String,
 			required: true,
 		},
+		profile_picture: {
+			type: String,
+			required: false,
+		},
 	},
 	{ timestamps: true }
 );
