@@ -5,7 +5,7 @@ type Account{
     firstname: String!
     lastname: String!
     profile_picture: String
-    Articles: [Article!]
+    articles: [Article!]
     bookmarked_articles: [Article!]
 }
 
