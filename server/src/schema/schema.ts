@@ -5,16 +5,18 @@ type Account{
     firstname: String!
     lastname: String!
     profile_picture: String
-    posts: [Post!]
+    Articles: [Article!]
+    bookmarked_articles: [Article!]
 }
 
-type Post{
+type Article{
     _id: String!
     author_id: Account!
     title: String!
     description: String!
     content: String!
     tags: [String!]
+    related_articles: [Article!]
 }
 
 input CreateAccountArgs{
@@ -25,7 +27,8 @@ input CreateAccountArgs{
 }
 
 input UpdateAccountArgs{
-    username: String!
+    firstname: String
+    lastname: String
     profile_picture: String
 }
 
@@ -38,8 +41,8 @@ type Mutation{
 
 type Query{
     account(id: String!): Account 
-    posts: [Post]
-    post(id:String!): Post
+    articles: [Article]
+    article(id:String!): Article
 }`;
 
 export default typeDefs;
