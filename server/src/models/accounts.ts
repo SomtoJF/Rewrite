@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { AccountInterface } from "../types/account";
+import { AccountInterface } from "./types/account";
 
 const accountSchema = new mongoose.Schema<AccountInterface>(
 	{
@@ -17,6 +17,10 @@ const accountSchema = new mongoose.Schema<AccountInterface>(
 		},
 		profile_picture: {
 			type: String,
+			required: false,
+		},
+		bookmarked_articles: {
+			type: [String],
 			required: false,
 		},
 	},
