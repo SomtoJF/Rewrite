@@ -7,4 +7,13 @@ type CreateAccountResolverArgs = {
 	};
 };
 
-export type { CreateAccountResolverArgs };
+type UpdateAccountResolverArgs = {
+	id: string;
+	edits: {
+		firstname?: string;
+		lastname?: string;
+		profile_picture?: string;
+	};
+};
+
+export type { CreateAccountResolverArgs, UpdateAccountResolverArgs };
