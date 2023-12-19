@@ -11,7 +11,8 @@ type Account{
 
 type Article{
     _id: String!
-    author_id: Account!
+    author_id: String!
+    author: Account!
     title: String!
     description: String!
     content: String!
@@ -32,16 +33,25 @@ input UpdateAccountArgs{
     profile_picture: String
 }
 
+input CreateArticleArgs{
+    author_id: String!
+    title: String!
+    description: String!
+    content: String!
+    tags: [String!]
+}
+
 type Mutation{
     createAccount(account: CreateAccountArgs!): Account
     updateAccount(id: String!, edits: UpdateAccountArgs): Account
     deleteAccount(id: String!): Account
+    createArticle(article: CreateArticleArgs!): Article
 }
 
 
 type Query{
     account(id: String!): Account 
-    articles: [Article]
+    articles(page: Int!): [Article]
     article(id:String!): Article
 }`;
 
