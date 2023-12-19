@@ -1,5 +1,5 @@
 import Account from "../../models/accounts.js";
-import { UpdateAccountResolverArgs } from "../types/account.js";
+import { UpdateAccountResolverArgs } from "../types";
 
 async function updateAccount(_: any, args: UpdateAccountResolverArgs) {
 	const accountDetails = await Account.findById(args.id);

@@ -1,4 +1,4 @@
-import { CreateAccountResolverArgs } from "../types/account.js";
+import { CreateAccountResolverArgs } from "../types";
 import Account from "../../models/accounts.js";
 
 async function createAccount(_: any, args: CreateAccountResolverArgs) {
