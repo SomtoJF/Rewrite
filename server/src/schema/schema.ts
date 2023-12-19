@@ -1,7 +1,7 @@
 const typeDefs = `#graphql 
 
 type Account{
-    _id: String!
+    _id: ID!
     firstname: String!
     lastname: String!
     profile_picture: String
