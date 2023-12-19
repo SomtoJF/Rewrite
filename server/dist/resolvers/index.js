@@ -1,21 +1,16 @@
-import Account from "../models/accounts.js";
+import createAccount from "./accounts/createAccount.js";
+import deleteAccount from "./accounts/deleteAccount.js";
+import getAccount from "./accounts/getOneAccount.js";
+import updateAccount from "./accounts/updateAccount.js";
 const resolvers = {
     Query: {
-        account: async (_, args) => await Account.findById(args.id),
+        account: getAccount,
     },
+    Account: {},
     Mutation: {
-        createAccount: async (_, args) => {
-            try {
-                const account = new Account(args.account);
-                console.log(args);
-                const newAccount = await account.save();
-                return newAccount;
-            }
-            catch (err) {
-                throw new Error(err);
-            }
-        },
-        deleteAccount: async (_, args) => await Account.findByIdAndDelete(args.id),
+        createAccount: createAccount,
+        deleteAccount: deleteAccount,
+        updateAccount: updateAccount,
     },
 };
 export default resolvers;
