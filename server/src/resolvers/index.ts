@@ -9,6 +9,7 @@ import getArticleAuthor from "./articles/getAuthor.js";
 import getAccountArticles from "./accounts/getAccountArticles.js";
 import deleteArticle from "./articles/deleteArticle.js";
 import updateArticle from "./articles/updateArticle.js";
+import getRelatedArticles from "./articles/getRelatedArticles.js";
 
 const resolvers = {
 	Query: {
@@ -21,6 +22,7 @@ const resolvers = {
 	},
 	Article: {
 		author: getArticleAuthor,
+		related_articles: getRelatedArticles,
 	},
 	Mutation: {
 		createAccount: createAccount,
