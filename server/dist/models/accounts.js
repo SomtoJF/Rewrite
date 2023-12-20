@@ -16,6 +16,10 @@ const accountSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
+    bookmarked_articles: {
+        type: [String],
+        required: false,
+    },
 }, { timestamps: true });
 const Account = mongoose.model("Account", accountSchema, "accounts");
 export default Account;
