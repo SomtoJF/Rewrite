@@ -42,12 +42,20 @@ input CreateArticleArgs{
     tags: [String!]
 }
 
+input UpdateArticleArgs{
+    title: String
+    description: String
+    content: String
+    tags: [String!]
+}
+
 type Mutation{
     createAccount(account: CreateAccountArgs!): Account
     updateAccount(id: String!, edits: UpdateAccountArgs): Account
     deleteAccount(id: String!): Account
     createArticle(article: CreateArticleArgs!): Article
     deleteArticle(id: String!): Article
+    updateArticle(id: String!, edits: UpdateArticleArgs!): Article
 }
 
 

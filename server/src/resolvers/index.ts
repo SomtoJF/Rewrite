@@ -8,6 +8,7 @@ import createArticle from "./articles/createArticle.js";
 import getArticleAuthor from "./articles/getAuthor.js";
 import getAccountArticles from "./accounts/getAccountArticles.js";
 import deleteArticle from "./articles/deleteArticle.js";
+import updateArticle from "./articles/updateArticle.js";
 
 const resolvers = {
 	Query: {
@@ -26,6 +27,7 @@ const resolvers = {
 		updateAccount: updateAccount,
 		deleteAccount: deleteAccount,
 		createArticle: createArticle,
+		updateArticle: updateArticle,
 		deleteArticle: deleteArticle,
 	},
 };
