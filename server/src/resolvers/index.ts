@@ -7,6 +7,7 @@ import getArticles from "./articles/getArticles.js";
 import createArticle from "./articles/createArticle.js";
 import getArticleAuthor from "./articles/getAuthor.js";
 import getAccountArticles from "./accounts/getAccountArticles.js";
+import deleteArticle from "./articles/deleteArticle.js";
 
 const resolvers = {
 	Query: {
@@ -25,6 +26,7 @@ const resolvers = {
 		updateAccount: updateAccount,
 		deleteAccount: deleteAccount,
 		createArticle: createArticle,
+		deleteArticle: deleteArticle,
 	},
 };
 
