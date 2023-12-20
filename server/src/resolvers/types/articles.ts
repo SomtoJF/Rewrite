@@ -1,5 +1,4 @@
 type GetArticlesResolverArgs = {
-	id: string;
 	page: number;
 };
 
