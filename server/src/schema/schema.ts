@@ -47,6 +47,7 @@ type Mutation{
     updateAccount(id: String!, edits: UpdateAccountArgs): Account
     deleteAccount(id: String!): Account
     createArticle(article: CreateArticleArgs!): Article
+    deleteArticle(id: String!): Article
 }
 
 
