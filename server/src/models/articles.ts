@@ -23,6 +23,10 @@ const articleSchema = new mongoose.Schema<ArticleInterface>(
 			type: [String],
 			required: false,
 		},
+		est_read_time: {
+			type: String,
+			required: true,
+		},
 	},
 	{ timestamps: true }
 );

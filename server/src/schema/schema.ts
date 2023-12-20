@@ -18,6 +18,7 @@ type Article{
     content: String!
     tags: [String!]
     related_articles: [Article!]
+    est_read_time: String!
 }
 
 input CreateAccountArgs{

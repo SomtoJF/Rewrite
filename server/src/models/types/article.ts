@@ -5,6 +5,7 @@ interface ArticleInterface {
 	description: string;
 	content: string;
 	tags?: Array<string>;
+	est_read_time: string;
 }
 
 export type { ArticleInterface };
