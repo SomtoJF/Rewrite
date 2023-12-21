@@ -1,46 +1,25 @@
-import { FormEvent, useState } from "react";
-import { useAuth } from "../contexts/authContext";
+import { useEffect } from "react";
+import Logo from "../components/Logo";
+import "../features/authentication/auth.styles.sass";
+import LeftAside from "../features/authentication/components/LeftAside";
+import RightAside from "../features/authentication/components/RightAside";
+import LoginForm from "../features/authentication/login/LoginForm";
+import useFormName from "../features/authentication/hooks/useFormName";
 
 export default function Login() {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	const { login } = useAuth();
+	const setActiveFormName = useFormName((state) => state.setActiveFormName);
 
-	const handleSubmit = async (e: FormEvent) => {
-		e.preventDefault();
-		await login(email, password);
-	};
+	useEffect(() => {
+		setActiveFormName("login");
+	});
 
 	return (
-		<main>
-			<form
-				action=""
-				onSubmit={(e) => {
-					handleSubmit(e);
-				}}
-			>
-				<h2>Login</h2>
-				<input
-					type="email"
-					name="email"
-					id="email"
-					placeholder="email@email.com"
-					value={email}
-					onChange={(e) => {
-						setEmail(e.target.value);
-					}}
-				/>
-				<input
-					type="password"
-					name="password"
-					id="password"
-					value={password}
-					onChange={(e) => {
-						setPassword(e.target.value);
-					}}
-				/>
-				<button type="submit">submit</button>
-			</form>
+		<main id="login-page" className="auth-page">
+			<LeftAside />
+			<RightAside>
+				<Logo />
+				<LoginForm />
+			</RightAside>
 		</main>
 	);
 }

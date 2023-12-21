@@ -1,46 +1,25 @@
-import { FormEvent, useState } from "react";
-import { useAuth } from "../contexts/authContext";
+import { useEffect } from "react";
+import "../features/authentication/auth.styles.sass";
+import LeftAside from "../features/authentication/components/LeftAside";
+import Logo from "../components/Logo";
+import useFormName from "../features/authentication/hooks/useFormName";
+import RightAside from "../features/authentication/components/RightAside";
+import SignupForm from "../features/authentication/signup/SignupForm";
 
 export default function Signup() {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	const { signup } = useAuth();
+	const setActiveFormName = useFormName((state) => state.setActiveFormName);
 
-	const handleSubmit = async (e: FormEvent) => {
-		e.preventDefault();
-		await signup(email, password);
-	};
+	useEffect(() => {
+		setActiveFormName("signup");
+	});
 
 	return (
-		<main>
-			<form
-				action=""
-				onSubmit={(e) => {
-					handleSubmit(e);
-				}}
-			>
-				<h2>Signup</h2>
-				<input
-					type="email"
-					name="email"
-					id="email"
-					placeholder="email@email.com"
-					value={email}
-					onChange={(e) => {
-						setEmail(e.target.value);
-					}}
-				/>
-				<input
-					type="password"
-					name="password"
-					id="password"
-					value={password}
-					onChange={(e) => {
-						setPassword(e.target.value);
-					}}
-				/>
-				<button type="submit">submit</button>
-			</form>
+		<main id="signup-page" className="auth-page">
+			<LeftAside />
+			<RightAside>
+				<Logo />
+				<SignupForm />
+			</RightAside>
 		</main>
 	);
 }
