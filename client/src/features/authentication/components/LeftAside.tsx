@@ -1,16 +1,10 @@
-import illustration from "../../../assets/Blog post-bro.svg";
+import Carousel from "./Carousel";
 import "./LeftAside.styles.sass";
 
 export default function LeftAside() {
 	return (
 		<aside id="left-aside">
-			<img src={illustration} alt="nature on screen illustration" />
-			<h3>Lorem, ipsum dolor.</h3>
-			<p>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
-				sunt beatae officia adipisci amet voluptatum iure deleniti sint nemo
-				iste?
-			</p>
+			<Carousel />
 		</aside>
 	);
 }
