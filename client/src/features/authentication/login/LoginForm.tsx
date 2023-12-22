@@ -1,14 +1,24 @@
 import { FormEvent, useState } from "react";
 import { useAuth } from "../../../contexts/authContext";
+import "./LoginForm.styles.sass";
+import Loader from "../../../components/Loader";
 
 export default function LoginForm() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const { login } = useAuth();
+	const [loading, setLoading] = useState(false);
 
 	const handleSubmit = async (e: FormEvent) => {
-		e.preventDefault();
-		await login(email, password);
+		try {
+			e.preventDefault();
+			setLoading(true);
+			await login(email, password);
+		} catch (err: any) {
+			throw new Error(err);
+		} finally {
+			setLoading(false);
+		}
 	};
 	return (
 		<form
@@ -16,28 +26,36 @@ export default function LoginForm() {
 			onSubmit={(e) => {
 				handleSubmit(e);
 			}}
+			id="login-form"
+			className="auth-form"
 		>
-			<h2>Login</h2>
-			<input
-				type="email"
-				name="email"
-				id="email"
-				placeholder="email@email.com"
-				value={email}
-				onChange={(e) => {
-					setEmail(e.target.value);
-				}}
-			/>
-			<input
-				type="password"
-				name="password"
-				id="password"
-				value={password}
-				onChange={(e) => {
-					setPassword(e.target.value);
-				}}
-			/>
-			<button type="submit">submit</button>
+			<h2>"Rewrite" your story</h2>
+			<label htmlFor="email">
+				Email
+				<input
+					type="email"
+					name="email"
+					id="email"
+					placeholder="email@email.com"
+					value={email}
+					onChange={(e) => {
+						setEmail(e.target.value);
+					}}
+				/>
+			</label>
+			<label htmlFor="password">
+				Password
+				<input
+					type="password"
+					name="password"
+					id="password"
+					value={password}
+					onChange={(e) => {
+						setPassword(e.target.value);
+					}}
+				/>
+			</label>
+			{loading ? <Loader /> : <button type="submit">submit</button>}
 		</form>
 	);
 }
