@@ -5,6 +5,7 @@ import Logo from "../components/Logo";
 import useFormName from "../features/authentication/hooks/useFormName";
 import RightAside from "../features/authentication/components/RightAside";
 import SignupForm from "../features/authentication/signup/SignupForm";
+import "../features/authentication/mediaQueries.styles.sass";
 
 export default function Signup() {
 	const setActiveFormName = useFormName((state) => state.setActiveFormName);

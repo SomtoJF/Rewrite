@@ -5,6 +5,7 @@ import LeftAside from "../features/authentication/components/LeftAside";
 import RightAside from "../features/authentication/components/RightAside";
 import LoginForm from "../features/authentication/login/LoginForm";
 import useFormName from "../features/authentication/hooks/useFormName";
+import "../features/authentication/mediaQueries.styles.sass";
 
 export default function Login() {
 	const setActiveFormName = useFormName((state) => state.setActiveFormName);
