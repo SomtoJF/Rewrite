@@ -1,4 +1,4 @@
-import illustration from "../../../assets/undraw_nature_on_screen_xkli.svg";
+import illustration from "../../../assets/Blog post-bro.svg";
 import "./LeftAside.styles.sass";
 
 export default function LeftAside() {
