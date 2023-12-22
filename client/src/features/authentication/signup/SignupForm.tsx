@@ -40,6 +40,8 @@ export default function SignupForm() {
 					id="firstname"
 					placeholder="John"
 					value={firstname}
+					required
+					maxLength={25}
 					onChange={(e) => {
 						setFirstName(e.target.value);
 					}}
@@ -53,6 +55,8 @@ export default function SignupForm() {
 					id="lastname"
 					placeholder="Doe"
 					value={lastname}
+					required
+					maxLength={25}
 					onChange={(e) => {
 						setLastName(e.target.value);
 					}}
@@ -66,6 +70,7 @@ export default function SignupForm() {
 					id="email"
 					placeholder="email@email.com"
 					value={email}
+					required
 					onChange={(e) => {
 						setEmail(e.target.value);
 					}}
@@ -77,6 +82,9 @@ export default function SignupForm() {
 					type="password"
 					name="password"
 					id="password"
+					required
+					minLength={6}
+					title="Password must be at least 6 characters"
 					value={password}
 					onChange={(e) => {
 						setPassword(e.target.value);
