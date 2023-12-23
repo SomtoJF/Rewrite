@@ -4,6 +4,7 @@ import {
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
 } from "firebase/auth";
+import firebase from "firebase/compat/app";
 
 interface authContext {
 	currentUser: any;
@@ -22,7 +23,7 @@ const AuthContext = createContext<authContext>({
 const useAuth = () => useContext(AuthContext);
 
 function AuthProvider({ children }: any) {
-	const [currentUser, setCurrentUser] = useState();
+	const [currentUser, setCurrentUser] = useState<firebase.User>();
 	const signup = async (email: string, password: string) => {
 		try {
 			const userCredential = await createUserWithEmailAndPassword(
@@ -65,7 +66,6 @@ function AuthProvider({ children }: any) {
 	useEffect(() => {
 		const unsubscribe = auth.onAuthStateChanged((user: any) => {
 			setCurrentUser(user);
-			console.log(currentUser);
 		});
 		return unsubscribe;
 	}, []);
