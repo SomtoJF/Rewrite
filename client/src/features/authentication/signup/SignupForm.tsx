@@ -7,6 +7,7 @@ import CREATE_ACCOUNT_MUTATION from "../../../services/authentication/createAcco
 import { useMutation } from "@apollo/client";
 import firebase from "firebase/compat/app";
 import { useNavigate } from "react-router-dom";
+import { useSnackbar } from "notistack";
 
 export default function SignupForm() {
 	const [email, setEmail] = useState("");
@@ -18,6 +19,7 @@ export default function SignupForm() {
 	const { signup, login, currentUser } = useAuth();
 	const [updatedUser, setUpdatedUser] = useState<firebase.User>(currentUser);
 	const navigate = useNavigate();
+	const { enqueueSnackbar } = useSnackbar();
 
 	const [postAccountData] = useMutation(CREATE_ACCOUNT_MUTATION, {
 		variables: {
@@ -46,8 +48,10 @@ export default function SignupForm() {
 				const response = await postAccountData();
 				console.log(response);
 			}, 2000);
+			enqueueSnackbar("Account Created Successfully", { variant: "success" });
 			navigate("/");
 		} catch (err: any) {
+			enqueueSnackbar("We couldn't create your account", { variant: "error" });
 			throw new Error(err);
 		} finally {
 			setLoading(false);

@@ -3,6 +3,7 @@ import { useAuth } from "../../../contexts/authContext";
 import "./LoginForm.styles.sass";
 import Loader from "../../../components/Loader";
 import { useNavigate } from "react-router-dom";
+import { useSnackbar } from "notistack";
 
 export default function LoginForm() {
 	const [email, setEmail] = useState("");
@@ -10,6 +11,7 @@ export default function LoginForm() {
 	const { login } = useAuth();
 	const [loading, setLoading] = useState(false);
 	const navigate = useNavigate();
+	const { enqueueSnackbar } = useSnackbar();
 
 	const handleSubmit = async (e: FormEvent) => {
 		try {
@@ -17,7 +19,9 @@ export default function LoginForm() {
 			setLoading(true);
 			await login(email, password);
 			navigate("/");
+			enqueueSnackbar("Login successful", { variant: "success" });
 		} catch (err: any) {
+			enqueueSnackbar("We couldn't log you in", { variant: "error" });
 			throw new Error(err);
 		} finally {
 			setLoading(false);
