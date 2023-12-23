@@ -3,8 +3,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
-import { AuthProvider } from "./contexts/authContext";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
+import { SnackbarProvider } from "notistack";
 
 const client = new ApolloClient({
 	uri: import.meta.env.VITE_REACT_APP_BACKEND_URL,
@@ -28,11 +28,11 @@ const router = createBrowserRouter([
 
 function App() {
 	return (
-		<AuthProvider>
-			<ApolloProvider client={client}>
+		<ApolloProvider client={client}>
+			<SnackbarProvider>
 				<RouterProvider router={router} />
-			</ApolloProvider>
-		</AuthProvider>
+			</SnackbarProvider>
+		</ApolloProvider>
 	);
 }
 
