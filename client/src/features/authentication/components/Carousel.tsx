@@ -30,7 +30,7 @@ export default function Carousel() {
 				<img src={commentIllustraion} alt="nature on screen illustration" />
 				<h3>Your Opinions</h3>
 				<p>
-					Seeing a post that sparks a thought? Comments sections are an open mic
+					Seen a post that sparks a thought? Comments sections are an open mic
 					for passionate voices like yours. Let's discuss!
 				</p>
 			</SwiperSlide>
@@ -38,9 +38,8 @@ export default function Carousel() {
 				<img src={sharingIllustration} alt="nature on screen illustration" />
 				<h3>From your keyboard to the world!</h3>
 				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Necessitatibus sunt beatae officia adipisci amet voluptatum iure
-					deleniti sint nemo iste?
+					Join a vibrant tapestry of voices, exchange ideas, and leave your mark
+					on the world, one post at a time.
 				</p>
 			</SwiperSlide>
 		</Swiper>
