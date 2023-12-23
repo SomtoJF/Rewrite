@@ -1,7 +1,12 @@
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import { useAuth } from "../../../contexts/authContext";
 import Loader from "../../../components/Loader";
 import "./SignupForm.styles.sass";
+import { auth } from "../../../Firebase/firebase";
+import CREATE_ACCOUNT_MUTATION from "../../../services/authentication/createAccount";
+import { useMutation } from "@apollo/client";
+import firebase from "firebase/compat/app";
+import { useNavigate } from "react-router-dom";
 
 export default function SignupForm() {
 	const [email, setEmail] = useState("");
@@ -9,13 +14,39 @@ export default function SignupForm() {
 	const [firstname, setFirstName] = useState("");
 	const [lastname, setLastName] = useState("");
 	const [loading, setLoading] = useState(false);
-	const { signup } = useAuth();
+	// currentUser is just being used as a placeholder for the updated user
+	const { signup, login, currentUser } = useAuth();
+	const [updatedUser, setUpdatedUser] = useState<firebase.User>(currentUser);
+	const navigate = useNavigate();
+
+	const [postAccountData] = useMutation(CREATE_ACCOUNT_MUTATION, {
+		variables: {
+			account: {
+				_id: updatedUser?.uid,
+				firstname: firstname,
+				lastname: lastname,
+			},
+		},
+	});
+
+	useEffect(() => {
+		const unsubscribe = auth.onAuthStateChanged((user: any) => {
+			setUpdatedUser(user);
+		});
+		return unsubscribe;
+	}, []);
 
 	const handleSubmit = async (e: FormEvent) => {
 		try {
 			e.preventDefault();
 			setLoading(true);
 			await signup(email, password);
+			await login(email, password);
+			setTimeout(async () => {
+				const response = await postAccountData();
+				console.log(response);
+			}, 2000);
+			navigate("/");
 		} catch (err: any) {
 			throw new Error(err);
 		} finally {
