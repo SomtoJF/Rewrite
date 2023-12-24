@@ -1,0 +1,53 @@
+@use '../App'
+
+#top-nav
+    position: absolute
+    background-color: App.$white
+    width: 100vw
+    box-sizing: border-box
+    padding: 0vh 5%
+    display: flex
+    justify-content: space-between
+    align-items: center
+    height: 7.5vh
+    font-family: App.$normal-font
+    z-index: 3
+    form
+        width: 70%
+        height: 60%
+        display: flex
+        justify-content: center
+        align-items: center
+        label
+            width: 90%
+            height: 100%
+            border-radius: 20px
+            border: none
+            background-color: App.$light-grey
+            padding: 0px 1%
+            display: flex
+            align-items: center
+        input
+            width: 100%
+            background-color: inherit
+            border: none
+            outline: none
+    #logo
+        font-size: 1.5rem
+    &>div
+        display: flex
+        align-items: center
+        gap: 10px
+    .auth-nav-button
+        width: 7vw
+        height: 5vh
+        font-weight: bold
+        border: none
+        border-radius: 5px
+        text-decoration: none
+        a
+            text-decoration: none
+            color: App.$charcoal
+    #signup-button, #signup-button>a
+        background-color: App.$charcoal
+        color: App.$white
