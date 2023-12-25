@@ -7,6 +7,7 @@ import useUserData from "../../zustand/useUserData";
 import { ApolloError, gql, useQuery } from "@apollo/client";
 import { useEffect } from "react";
 import NavAvatar from "./NavAvatar";
+import NavDropdown from "./NavDropdown";
 
 const DATA = gql`
 	query getData($id: String!) {
@@ -60,11 +61,13 @@ export default function Navbar() {
 				</label>
 			</form>
 			{userData ? (
-				<NavAvatar
-					firstname={userData?.account.firstname}
-					lastname={userData?.account.lastname}
-					profile_picture={userData?.account.profile_picture}
-				/>
+				<NavDropdown>
+					<NavAvatar
+						firstname={userData?.account.firstname}
+						lastname={userData?.account.lastname}
+						profile_picture={userData?.account.profile_picture}
+					/>
+				</NavDropdown>
 			) : (
 				<div>
 					<button className="auth-nav-button" id="login-button">

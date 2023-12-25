@@ -12,9 +12,10 @@ export default function NavAvatar({
 	profile_picture,
 }: NavAvatarProps) {
 	return (
-		<Avatar
-			sx={{ backgroundColor: "#383230" }}
-			src={profile_picture}
-		>{`${firstname.charAt(0)} ${lastname.charAt(0)}`}</Avatar>
+		<Avatar sx={{ backgroundColor: "#383230" }} src={profile_picture}>
+			<span title={`${firstname} ${lastname}`}>{`${firstname.charAt(
+				0
+			)} ${lastname.charAt(0)}`}</span>
+		</Avatar>
 	);
 }
