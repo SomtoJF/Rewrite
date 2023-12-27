@@ -2,23 +2,23 @@ import type { MenuProps } from "antd";
 import { Button, Dropdown, Space } from "antd";
 import { ReactElement } from "react";
 import { useAuth } from "../../contexts/authContext";
+import { Link } from "react-router-dom";
+import "./NavDropDown.styles.sass";
 
 interface NavDropDownProps {
 	children: ReactElement;
 }
 
-const dropdownButtonStyles = {
-	border: "none",
-	backgroundColor: "transparent",
-	width: "100%",
-};
-
 export default function NavDropdown({ children }: NavDropDownProps) {
-	const { logout } = useAuth();
+	const { logout, currentUser } = useAuth();
 	const items: MenuProps["items"] = [
 		{
 			key: 0,
-			label: "My Account",
+			label: (
+				<button className="dropdown-button">
+					<Link to={`/account/${currentUser}`}>My Account</Link>
+				</button>
+			),
 		},
 		{
 			type: "divider",
@@ -26,11 +26,7 @@ export default function NavDropdown({ children }: NavDropDownProps) {
 		{
 			key: "1",
 			label: (
-				<button
-					style={{ ...dropdownButtonStyles, textAlign: "left" }}
-					type="button"
-					onClick={() => {}}
-				>
+				<button className="dropdown-button" type="button" onClick={() => {}}>
 					Profile picture
 				</button>
 			),
@@ -41,7 +37,7 @@ export default function NavDropdown({ children }: NavDropDownProps) {
 			label: (
 				<button
 					type="button"
-					style={{ ...dropdownButtonStyles, color: "red", textAlign: "left" }}
+					style={{ color: "red" }}
 					onClick={() => {
 						logout();
 						window.location.reload();
