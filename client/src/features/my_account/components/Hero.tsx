@@ -1,23 +1,26 @@
 import { Avatar } from "@mui/material";
-import useUserData from "../../../zustand/useUserData";
 import "./Hero.styles.sass";
 
-export default function Hero() {
-	const userData = useUserData((state) => state.userData);
+interface HeroProps {
+	firstname: string;
+	lastname: string;
+	profile_picture: string | undefined;
+}
+
+export default function Hero({
+	firstname,
+	lastname,
+	profile_picture,
+}: HeroProps) {
 	return (
 		<header id="account-hero">
 			<div />
 			<div>
-				<Avatar
-					sx={{ width: 150, height: 150 }}
-					src={userData?.account.profile_picture}
-				>
+				<Avatar sx={{ width: 150, height: 150 }} src={profile_picture}>
 					{" "}
-					{`${userData?.account.firstname.charAt(
-						0
-					)} ${userData?.account.lastname.charAt(0)}`}
+					{`${firstname.charAt(0)} ${lastname.charAt(0)}`}
 				</Avatar>
-				<p>{`${userData?.account.firstname} ${userData?.account.lastname}`}</p>
+				<p>{`${firstname} ${lastname}`}</p>
 			</div>
 		</header>
 	);
