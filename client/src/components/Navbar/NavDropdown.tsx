@@ -4,6 +4,7 @@ import { ReactElement } from "react";
 import { useAuth } from "../../contexts/authContext";
 import { Link } from "react-router-dom";
 import "./NavDropDown.styles.sass";
+import { useNavigate } from "react-router-dom";
 
 interface NavDropDownProps {
 	children: ReactElement;
@@ -11,6 +12,7 @@ interface NavDropDownProps {
 
 export default function NavDropdown({ children }: NavDropDownProps) {
 	const { logout, currentUser } = useAuth();
+	const navigate = useNavigate();
 	const items: MenuProps["items"] = [
 		{
 			key: 0,
@@ -40,7 +42,7 @@ export default function NavDropdown({ children }: NavDropDownProps) {
 					style={{ color: "red" }}
 					onClick={() => {
 						logout();
-						window.location.reload();
+						navigate("/");
 					}}
 					onMouseOver={(e) => {
 						e.currentTarget.style.color = "#f4f4f4";
