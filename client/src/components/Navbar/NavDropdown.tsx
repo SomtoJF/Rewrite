@@ -68,6 +68,7 @@ export default function NavDropdown({ children }: NavDropDownProps) {
 						height: "fit-content",
 						background: "none",
 						border: "none",
+						boxShadow: "none",
 					}}
 				>
 					{children}
