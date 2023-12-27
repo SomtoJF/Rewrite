@@ -16,7 +16,7 @@ export default function NavDropdown({ children }: NavDropDownProps) {
 			key: 0,
 			label: (
 				<button className="dropdown-button">
-					<Link to={`/account/${currentUser}`}>My Account</Link>
+					<Link to={`/account/${currentUser?.uid}`}>My Account</Link>
 				</button>
 			),
 		},
