@@ -44,6 +44,7 @@ export default function NavDropdown({ children }: NavDropDownProps) {
 					style={{ ...dropdownButtonStyles, color: "red", textAlign: "left" }}
 					onClick={() => {
 						logout();
+						window.location.reload();
 					}}
 					onMouseOver={(e) => {
 						e.currentTarget.style.color = "#f4f4f4";
