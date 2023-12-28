@@ -23,6 +23,20 @@ const router = createBrowserRouter([
 				path: "account/:id",
 				element: <Account />,
 			},
+			{
+				path: "article/",
+				element: <></>,
+				children: [
+					{
+						path: "create",
+						element: <></>,
+					},
+					{
+						path: ":id",
+						element: <></>,
+					},
+				],
+			},
 		],
 	},
 	{
