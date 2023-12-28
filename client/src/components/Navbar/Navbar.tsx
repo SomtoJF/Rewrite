@@ -31,18 +31,14 @@ export default function Navbar() {
 			throw new Error(err.message);
 		},
 		onCompleted(data) {
-			console.log(data);
 			setUserData(data);
 		},
 	});
-	console.log(currentUser?.uid);
 
 	useEffect(() => {
 		if (currentUser) {
 			refetch({ id: currentUser.uid });
 			setUserData(data);
-			// console.log("hey");
-			// console.log(data);
 		}
 	}, [currentUser]);
 
