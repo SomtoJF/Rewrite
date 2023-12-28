@@ -21,11 +21,19 @@ const articleSchema = new mongoose.Schema<ArticleInterface>(
 		},
 		tags: {
 			type: [String],
-			required: false,
+			required: true,
 		},
 		est_read_time: {
 			type: String,
 			required: true,
+		},
+		thumbnail_url: {
+			type: String,
+			required: false,
+		},
+		images: {
+			type: [String],
+			required: false,
 		},
 	},
 	{ timestamps: true }

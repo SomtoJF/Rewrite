@@ -7,6 +7,8 @@ type Account{
     profile_picture: String
     articles: [Article!]
     bookmarked_articles: [Article!]
+    createdAt: String!
+    updatedAt: String!
 }
 
 type Article{
@@ -16,9 +18,13 @@ type Article{
     title: String!
     description: String!
     content: String!
-    tags: [String!]
+    tags: [String!]!
     related_articles: [Article!]
     est_read_time: String!
+    thumbnail_url: String
+    images: [String!]
+    createdAt: String!
+    updatedAt: String!
 }
 
 input CreateAccountArgs{
@@ -39,7 +45,9 @@ input CreateArticleArgs{
     title: String!
     description: String!
     content: String!
-    tags: [String!]
+    tags: [String!]!
+    thumbnail_url: String
+    images: [String!]
 }
 
 input UpdateArticleArgs{

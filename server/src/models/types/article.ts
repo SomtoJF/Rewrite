@@ -4,8 +4,10 @@ interface ArticleInterface {
 	title: string;
 	description: string;
 	content: string;
-	tags?: Array<string>;
+	tags: Array<string>;
 	est_read_time: string;
+	images?: Array<string>;
+	thumbnail_url?: string;
 }
 
 export type { ArticleInterface };
