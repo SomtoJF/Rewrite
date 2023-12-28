@@ -1,4 +1,5 @@
 const typeDefs = `#graphql 
+scalar Date
 
 type Account{
     _id: ID!
@@ -7,8 +8,8 @@ type Account{
     profile_picture: String
     articles: [Article!]
     bookmarked_articles: [Article!]
-    createdAt: String!
-    updatedAt: String!
+    createdAt: Date!
+    updatedAt: Date!
 }
 
 type Article{
@@ -23,8 +24,8 @@ type Article{
     est_read_time: String!
     thumbnail_url: String
     images: [String!]
-    createdAt: String!
-    updatedAt: String!
+    createdAt: Date!
+    updatedAt: Date!
 }
 
 input CreateAccountArgs{
