@@ -1,7 +1,7 @@
 import Hero from "../features/my_account/components/Hero";
 import MyArticles from "../features/my_account/components/MyArticles";
 import useUserData from "../zustand/useUserData";
-import Error from "./Error";
+import Error from "../components/Error/Error";
 
 export default function Account() {
 	const userData = useUserData((state) => state.userData);
