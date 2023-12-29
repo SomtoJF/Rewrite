@@ -7,6 +7,7 @@ import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import { SnackbarProvider } from "notistack";
 import Layout from "./Layout";
 import Account from "./pages/Account";
+import Error from "./components/Error/Error";
 
 const client = new ApolloClient({
 	uri: import.meta.env.VITE_REACT_APP_BACKEND_URL,
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <Layout />,
+		errorElement: <Error />,
 		children: [
 			{ path: "/", element: <Home /> },
 			{
