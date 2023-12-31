@@ -2,6 +2,7 @@ import { ChangeEvent, ReactElement, useState } from "react";
 import { Modal, Image } from "antd";
 import { UploadClient } from "@uploadcare/upload-client";
 import { useSnackbar } from "notistack";
+import usePostProfilePicture from "../hooks/useUpdateAccountInfo";
 
 type props = {
 	open: boolean;
@@ -17,8 +18,9 @@ const client = new UploadClient({
 const MyModal = ({ open, setOpen, trigger, title }: props) => {
 	const [confirmLoading, setConfirmLoading] = useState(false);
 	const [newDisplayPicture, setNewDisplayPicture] = useState<File>();
-	const [newImageUrl, setNewImageUrl] = useState("");
+	const [previewImageUrl, setPreviewImageUrl] = useState("");
 	const { enqueueSnackbar } = useSnackbar();
+	const { updateAccountInfo } = usePostProfilePicture();
 
 	const showModal = () => {
 		setOpen(true);
@@ -33,8 +35,12 @@ const MyModal = ({ open, setOpen, trigger, title }: props) => {
 		try {
 			if (!newDisplayPicture) throw new Error("No image selected");
 			const response = await client.uploadFile(newDisplayPicture);
-			console.log(response.cdnUrl);
+			if (!response.cdnUrl) throw new Error("No display picture");
+			await updateAccountInfo({
+				edits: { profile_picture: response.cdnUrl },
+			});
 			enqueueSnackbar("Upload successful", { variant: "success" });
+			window.location.reload();
 		} catch (err: any) {
 			enqueueSnackbar("We couldn't upload your profile picture", {
 				variant: "error",
@@ -49,10 +55,8 @@ const MyModal = ({ open, setOpen, trigger, title }: props) => {
 	const inputChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
 		if (e.target && e.target.files) {
 			setNewDisplayPicture(e.target.files[0]);
-			console.log(e.target.files);
 			const imageUrl = URL.createObjectURL(e.target.files[0]);
-			setNewImageUrl(imageUrl);
-			console.log(imageUrl);
+			setPreviewImageUrl(imageUrl);
 		}
 	};
 
@@ -68,7 +72,7 @@ const MyModal = ({ open, setOpen, trigger, title }: props) => {
 				okText="Upload"
 			>
 				<form action="">
-					<Image src={newImageUrl} />
+					<Image src={previewImageUrl} />
 					<input
 						type="file"
 						name="image"
