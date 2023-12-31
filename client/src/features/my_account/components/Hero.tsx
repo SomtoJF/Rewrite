@@ -26,7 +26,10 @@ export default function Hero({
 						setOpen={setIsModalOpen}
 						title="Upload new profile picture"
 						trigger={
-							<Avatar sx={{ width: 150, height: 150 }} src={profile_picture}>
+							<Avatar
+								sx={{ width: "max(100px, 10vw)", height: "max(100px, 10vw)" }}
+								src={profile_picture}
+							>
 								{" "}
 								{`${firstname.charAt(0)} ${lastname.charAt(0)}`}
 							</Avatar>
