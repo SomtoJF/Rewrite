@@ -1,0 +1,48 @@
+@use '../../../App'
+
+#blog-post-form
+    background-color: white
+    width: 70%
+    border-radius: 15px
+    min-height: 80vh
+    display: flex
+    flex-direction: column
+    gap: 2vh
+    padding: 5%
+    -webkit-box-shadow: 0px -1px 7px 0px rgba(169,169,169,1)
+    -moz-box-shadow: 0px -1px 7px 0px rgba(169,169,169,1)
+    box-shadow: 0px -1px 7px 0px rgba(169,169,169,1)
+    &>div
+        display: flex
+        justify-content: space-between
+        flex-direction: column
+        align-items: flex-start
+        gap: 5px
+        label
+            font-weight: bold
+        input
+            height: 30px
+        textarea
+            height: 10vh
+            resize: vertical
+        input,textarea
+            width: 100%
+            border: solid 1px grey
+            border-radius: 2px
+    #buttons-container
+        flex-direction: row
+        justify-content: flex-start
+        gap: 20px
+    button
+        display: block
+        background-color: App.$clay
+        padding: 10px
+        border-radius: 5px
+        color: App.$white
+        width: 100px
+        &:hover
+            background-color: lighten(App.$clay, 10)
+        &[type="submit"]
+            background-color: App.$charcoal
+            &:hover
+                background-color: lighten(App.$charcoal, 10)
