@@ -11,7 +11,6 @@
     background-color: App.$charcoal
     color: App.$white
     margin: 0px
-    padding: 0px 10%
     text-align: center
     overflow: hidden
 
@@ -19,12 +18,20 @@
         margin: 0px
         width: 100%
         height: 100%
-        text-align: center
+        text-align: left
         .swiper-slide
             display: flex
             flex-direction: column
-            justify-content: center
-            align-items: center
+            justify-content: flex-end
+            align-items: flex-start
+            background-size: cover
+            background-repeat: no-repeat
+            background-position: center
+            padding: 0px 10%
+            box-sizing: border-box
+            opacity: 0.8
+            p
+                margin-bottom: 200px
     .swiper-pagination-bullet
         background-color: App.$white
 
@@ -34,9 +41,10 @@
         height: auto
 
     h3
-        font-family: App.$normal-font
+        font-family: App.$block-font
+        font-weight: normal
         font-size: 1.5rem
     p
         margin: 0px
-        font-size: 0.8rem
+        font-size: 1.8rem
         font-family: App.$normal-font
