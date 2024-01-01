@@ -21,7 +21,7 @@ const Tags = ({ tags, setTags }: TagsProps) => {
 		if (inputVisible) {
 			inputRef.current?.focus();
 		}
-	}, [inputVisible, tags]);
+	}, [inputVisible]);
 
 	useEffect(() => {
 		editInputRef.current?.focus();
