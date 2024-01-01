@@ -1,5 +1,5 @@
 import "./App.sass";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
@@ -8,6 +8,7 @@ import { SnackbarProvider } from "notistack";
 import Layout from "./Layout";
 import Account from "./pages/Account";
 import Error from "./components/Error/Error";
+import CreateBlogPost from "./pages/CreateBlogPost";
 
 const client = new ApolloClient({
 	uri: import.meta.env.VITE_REACT_APP_BACKEND_URL,
@@ -27,11 +28,11 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "article/",
-				element: <></>,
+				element: <Outlet />,
 				children: [
 					{
 						path: "create",
-						element: <></>,
+						element: <CreateBlogPost />,
 					},
 					{
 						path: ":id",
