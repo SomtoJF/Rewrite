@@ -130,6 +130,7 @@ const Tags = ({ tags, setTags }: TagsProps) => {
 					onChange={handleInputChange}
 					onBlur={handleInputConfirm}
 					onPressEnter={handleInputConfirm}
+					id="tags"
 				/>
 			) : (
 				<Tag style={tagPlusStyle} icon={<PlusOutlined />} onClick={showInput}>
