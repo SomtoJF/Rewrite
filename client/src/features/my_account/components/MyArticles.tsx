@@ -28,7 +28,7 @@ const MY_ARTICLES_QUERY = gql`
 
 export default function MyArticles({ id }: MyArticlesProps) {
 	const { loading, data } = useQuery(MY_ARTICLES_QUERY, {
-		variables: { id: id },
+		variables: { id: "123sqd5" },
 		onError: (err: ApolloError) => {
 			throw new Error(err.message);
 		},
@@ -40,16 +40,14 @@ export default function MyArticles({ id }: MyArticlesProps) {
 		<section id="my-articles">
 			<h2>My Articles</h2>
 			{loading ? (
-				<>
-					<section id="articles-container">
-						<Skeleton component={"article"} className="productItem" />
-						<Skeleton component={"article"} className="productItem" />
-						<Skeleton component={"article"} className="productItem" />
-						<Skeleton component={"article"} className="productItem" />
-						<Skeleton component={"article"} className="productItem" />
-						<Skeleton component={"article"} className="productItem" />
-					</section>
-				</>
+				<section id="articles-container">
+					<Skeleton component={"article"} className="productItem" />
+					<Skeleton component={"article"} className="productItem" />
+					<Skeleton component={"article"} className="productItem" />
+					<Skeleton component={"article"} className="productItem" />
+					<Skeleton component={"article"} className="productItem" />
+					<Skeleton component={"article"} className="productItem" />
+				</section>
 			) : data.account.articles.length == 0 ? (
 				<Nosections />
 			) : (
