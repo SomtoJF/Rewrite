@@ -2,23 +2,26 @@
 
 #my-articles
     margin-top: 5%
-    padding: App.$horizontal-padding
     padding-bottom: 10%
     h2
+        padding: App.$horizontal-padding
         font-family: App.$block-font
         margin: 50px 0px
     #articles-container
         display: grid
-        grid-template-columns: repeat(auto-fill, max(300px, 25vw))
-        grid-template-rows: 250px
-        grid-auto-rows: 250px
-        column-gap: 5%
-        row-gap: 35px
+        grid-template-columns: repeat(1, 350px)
+        grid-template-rows: 500px
+        grid-auto-rows: 500px
+        column-gap: 0px
+        row-gap: 0px
         justify-content: center
         width: 100%
         box-sizing: border-box
 
         .article
+            box-sizing: border-box
+            padding: 10%
+            border: solid 1px App.$charcoal
             display: grid
             grid-template-columns: 1fr
             grid-template-rows: 5fr 1fr 1fr 1fr
@@ -36,7 +39,6 @@
                 margin: 0px
                 padding: 0px
                 overflow: hidden
-                border-radius: 15px
                 display: flex
                 justify-content: center
                 align-items: flex-start
@@ -45,8 +47,8 @@
                     width: 100%
                     background-color: #fff
             h3
-                font-family: App.$block-font
-                font-size: 1.2rem
+                font-family: App.$normal-font
+                font-size: 1.4rem
                 margin: 0px
                 padding: 0px
                 align-self: center
@@ -54,10 +56,53 @@
                 font-family: App.$normal-font
                 margin: 0px
                 padding: 0px
+                font-size: 0.9rem
+                font-weight: 300
             div
+                font-size: 0.8rem
                 display: flex
                 gap: 2%
                 align-items: center
-                p#author-name
+                p
+                    font-weight: 300
+                span.bold
                     font-weight: 600
-        
+ 
+@media all and (min-width: 700px)
+    #my-articles    
+        #articles-container
+            grid-template-columns: repeat(2, 350px)
+            .article
+                &:nth-child(n+3)
+                    border-top: none
+                    
+
+
+@media all and (min-width: 1050px)
+    #my-articles    
+        #articles-container
+            grid-template-columns: repeat(3, 350px)
+            .article
+                &:nth-child(n + 3)
+                    border-top: solid 1px App.$charcoal
+                &:nth-child(n+4)
+                    border-top: none
+
+@media all and (min-width: 1400px)
+    #my-articles    
+        #articles-container
+            grid-template-columns: repeat(4, 350px)
+            .article
+                &:nth-child(n + 3), &:nth-child(n+4)
+                    border-top: solid 1px App.$charcoal
+                &:nth-child(n+5)
+                    border-top: none
+
+@media all and (min-width: 1750px)
+    #my-articles    
+        #articles-container
+            grid-template-columns: repeat(5, 350px)
+            .article
+                &:nth-child(n+5)
+                    border-top: none
+
