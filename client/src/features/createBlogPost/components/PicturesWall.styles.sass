@@ -1,0 +1,42 @@
+@use "../../../App.sass"
+
+div#pictures-wall
+    width: 100%
+    overflow-x: auto
+    max-height: 200px
+    display: flex
+    align-items: center
+    gap: 10px
+    height: 150px
+    &>*
+        width: 100px
+        height: 100px
+        flex-shrink: 0
+        display: block
+    .MuiBadge-badge
+        padding: 0px
+    .cancel-button-container
+        display: flex
+        justify-content: center
+        align-items: center
+        overflow: hidden
+    label
+        background-color: #FAFAFA
+        border: dashed 1px grey
+        border-radius: 5px
+        display: flex
+        flex-direction: column
+        justify-content: center
+        gap: 10px
+        cursor: pointer
+        align-items: center
+        position: relative
+        overflow: hidden
+        width: 100px
+        height: 100px
+        p
+            margin: 0px
+        &:hover
+            border: dashed 1px #1677FF
+        input
+            display: none
