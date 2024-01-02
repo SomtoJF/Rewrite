@@ -1,8 +1,9 @@
 import { ChangeEvent, ReactElement, useState } from "react";
 import { Modal, Image } from "antd";
-import { UploadClient } from "@uploadcare/upload-client";
 import { useSnackbar } from "notistack";
 import usePostProfilePicture from "../hooks/useUpdateAccountInfo";
+import fallback from "../../../lib/fallbackImage";
+import uploadImage from "../../../lib/uploadImage";
 
 type props = {
 	open: boolean;
@@ -10,10 +11,6 @@ type props = {
 	trigger: ReactElement;
 	title: string;
 };
-
-const client = new UploadClient({
-	publicKey: import.meta.env.VITE_REACT_APP_UPLOADCARE_KEY,
-});
 
 const MyModal = ({ open, setOpen, trigger, title }: props) => {
 	const [confirmLoading, setConfirmLoading] = useState(false);
@@ -34,10 +31,10 @@ const MyModal = ({ open, setOpen, trigger, title }: props) => {
 		setConfirmLoading(true);
 		try {
 			if (!newDisplayPicture) throw new Error("No image selected");
-			const response = await client.uploadFile(newDisplayPicture);
-			if (!response.cdnUrl) throw new Error("No display picture");
+			const profilePictureCdn = (await uploadImage(newDisplayPicture)).cdnUrl;
+			if (!profilePictureCdn) throw new Error("No profile picture");
 			await updateAccountInfo({
-				edits: { profile_picture: response.cdnUrl },
+				edits: { profile_picture: profilePictureCdn },
 			});
 			enqueueSnackbar("Upload successful", { variant: "success" });
 			window.location.reload();
@@ -79,7 +76,7 @@ const MyModal = ({ open, setOpen, trigger, title }: props) => {
 				okText="Upload"
 			>
 				<form action="">
-					<Image src={previewImageUrl} />
+					<Image src={previewImageUrl} fallback={fallback} />
 					<input
 						type="file"
 						name="image"
