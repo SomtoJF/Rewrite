@@ -28,7 +28,7 @@ const MY_ARTICLES_QUERY = gql`
 
 export default function MyArticles({ id }: MyArticlesProps) {
 	const { loading, data } = useQuery(MY_ARTICLES_QUERY, {
-		variables: { id: "123sqd5" },
+		variables: { id: id },
 		onError: (err: ApolloError) => {
 			throw new Error(err.message);
 		},
