@@ -66,10 +66,6 @@ export default function BlogPostform({
 				<label htmlFor="tags">Tags*</label>
 				<Tags tags={tags} setTags={setTags} />
 			</div>
-			<div id="buttons-container">
-				<button type="button">Preview</button>
-				<button type="submit">Post</button>
-			</div>
 		</form>
 	);
 }
