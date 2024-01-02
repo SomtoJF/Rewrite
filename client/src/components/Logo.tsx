@@ -4,7 +4,7 @@ import "./Logo.styles.sass";
 export default function Logo() {
 	return (
 		<div id="logo">
-			<Link to={"/"}>Rewrite</Link>
+			<Link to={"/"}>REWRITE BLOG</Link>
 		</div>
 	);
 }
