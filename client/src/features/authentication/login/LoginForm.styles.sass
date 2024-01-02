@@ -26,13 +26,16 @@
             font-size: 1.2rem
             color: App.$charcoal
     button[type="submit"]
-        border-radius: 30px
-        background-color: App.$charcoal
-        color: App.$white
-        border: none
+        background-color: App.$white
+        color: App.$charcoal
+        border: solid 2px App.$charcoal
         height: 15%
         width: max(45%, 100px)
         align-self: center
         margin-top: 10%
+        transition: 0.5s
+        &:hover
+            color: App.$white
+            background-color: App.$charcoal
     &>*
         display: block
