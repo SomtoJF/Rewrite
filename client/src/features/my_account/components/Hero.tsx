@@ -27,7 +27,11 @@ export default function Hero({
 						title="Upload new profile picture"
 						trigger={
 							<Avatar
-								sx={{ width: "max(100px, 10vw)", height: "max(100px, 10vw)" }}
+								sx={{
+									width: "max(100px, 10vw)",
+									height: "max(100px, 10vw)",
+									border: "1px solid #383230",
+								}}
 								src={profile_picture}
 							>
 								{" "}
