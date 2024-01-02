@@ -2,9 +2,9 @@
 
 #blog-post-form
     background-color: white
-    width: 70%
+    width: 60%
     border-radius: 15px
-    min-height: 80vh
+    height: 80vh
     display: flex
     flex-direction: column
     gap: 2vh
@@ -23,26 +23,9 @@
         input
             height: 30px
         textarea
-            height: 10vh
+            height: 20vh
             resize: vertical
         input,textarea
             width: 100%
             border: solid 1px grey
             border-radius: 2px
-    #buttons-container
-        flex-direction: row
-        justify-content: flex-start
-        gap: 20px
-    button
-        display: block
-        background-color: App.$clay
-        padding: 10px
-        border-radius: 5px
-        color: App.$white
-        width: 100px
-        &:hover
-            background-color: lighten(App.$clay, 10)
-        &[type="submit"]
-            background-color: App.$charcoal
-            &:hover
-                background-color: lighten(App.$charcoal, 10)
