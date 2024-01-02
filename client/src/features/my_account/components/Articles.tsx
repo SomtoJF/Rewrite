@@ -1,5 +1,5 @@
-import { Avatar } from "@mui/material";
-import defaultArticleThumbnail from "../../../assets/pexels-vlada-karpovich-4050347 (1).jpg";
+import { useEffect } from "react";
+import elementIntersectsXAxis from "../../../lib/elementIntersectsXAxis";
 
 type ArticleProps = {
 	data: {
@@ -24,7 +24,25 @@ type ArticlesInterface = {
 	};
 };
 
+const defaultArticleThumbnail =
+	"https://ucarecdn.com/ec09d892-c584-4f98-9a0f-debb55667488/-/preview/500x500/-/quality/smart_retina/-/format/auto/";
+
 export default function Articles({ data }: ArticleProps) {
+	const resolveArticleBorderStyles = () => {
+		const articles = document.querySelectorAll(
+			".article"
+		) as NodeListOf<HTMLElement>;
+		for (let i = 1; i < articles.length; i++) {
+			articles[i].style.borderLeft = "solid 1px #383230";
+			if (elementIntersectsXAxis(articles[i], articles[i - 1])) {
+				articles[i].style.borderLeft = "none";
+			}
+		}
+	};
+	useEffect(() => {
+		resolveArticleBorderStyles();
+		window.addEventListener("resize", resolveArticleBorderStyles);
+	}, []);
 	return (
 		<>
 			{data.account.articles.map((article, index) => (
@@ -42,24 +60,11 @@ export default function Articles({ data }: ArticleProps) {
 					<h3>{article.title}</h3>
 					<p>{article.description}</p>
 					<div>
-						<span
-							title={`${article.author.firstname} ${article.author.lastname}`}
-						>
-							<Avatar
-								sx={{
-									width: "24px",
-									height: "24px",
-									fontSize: 11,
-									backgroundColor: "#854621",
-								}}
-								src={article.author?.profile_picture}
-							>{`${article.author.firstname.charAt(
-								0
-							)} ${article.author.lastname.charAt(0)}`}</Avatar>
-						</span>
+						<span className="bold">Author</span>
 						<p id="author-name">
 							{article.author.firstname} {article.author.lastname}
 						</p>
+						<span className="bold">Duration</span>
 						<p>{article.est_read_time}</p>
 					</div>
 				</article>
