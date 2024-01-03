@@ -73,12 +73,15 @@ export default function Articles({ data }: ArticleProps) {
 							alt={article.title}
 						/>
 					</figure>
-					<h3>{article.title}</h3>
+					<h3 title={article.title}>{article.title}</h3>
 					<p>{article.description}</p>
 					<div>
 						<span className="bold">Author</span>
-						<p id="author-name">
-							{article.author.firstname} {article.author.lastname}
+						<p
+							id="author-name"
+							title={`${article.author.firstname} ${article.author.lastname}`}
+						>
+							{article.author.firstname.charAt(0)}. {article.author.lastname}
 						</p>
 						<span className="bold">Duration</span>
 						<p>{article.est_read_time}</p>
