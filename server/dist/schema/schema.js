@@ -1,12 +1,17 @@
 const typeDefs = `#graphql 
+scalar Date
 
 type Account{
     _id: ID!
     firstname: String!
     lastname: String!
     profile_picture: String
+    banner_picture: String
     articles: [Article!]
+    bookmarked_articles_id: [String]
     bookmarked_articles: [Article!]
+    createdAt: Date!
+    updatedAt: Date!
 }
 
 type Article{
@@ -16,9 +21,13 @@ type Article{
     title: String!
     description: String!
     content: String!
-    tags: [String!]
+    tags: [String!]!
     related_articles: [Article!]
     est_read_time: String!
+    thumbnail_url: String
+    images: [String!]
+    createdAt: Date!
+    updatedAt: Date!
 }
 
 input CreateAccountArgs{
@@ -26,12 +35,14 @@ input CreateAccountArgs{
     firstname: String!
     lastname: String!
     profile_picture: String
+    banner_picture: String
 }
 
 input UpdateAccountArgs{
     firstname: String
     lastname: String
     profile_picture: String
+    banner_picture: String
 }
 
 input CreateArticleArgs{
@@ -39,7 +50,9 @@ input CreateArticleArgs{
     title: String!
     description: String!
     content: String!
-    tags: [String!]
+    tags: [String!]!
+    thumbnail_url: String
+    images: [String!]
 }
 
 input UpdateArticleArgs{

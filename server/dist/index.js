@@ -17,6 +17,7 @@ async function startServer() {
     const server = new ApolloServer({
         typeDefs: typeDefs,
         resolvers: resolvers,
+        introspection: process.env.NODE_ENV !== "production",
     });
     await server.start();
     // Apply the Apollo middleware to the Express app

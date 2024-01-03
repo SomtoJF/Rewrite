@@ -16,7 +16,11 @@ const accountSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
-    bookmarked_articles: {
+    banner_picture: {
+        type: String,
+        required: false,
+    },
+    bookmarked_articles_id: {
         type: [String],
         required: false,
     },

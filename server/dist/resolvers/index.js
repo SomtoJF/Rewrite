@@ -10,7 +10,10 @@ import getAccountArticles from "./accounts/getAccountArticles.js";
 import deleteArticle from "./articles/deleteArticle.js";
 import updateArticle from "./articles/updateArticle.js";
 import getRelatedArticles from "./articles/getRelatedArticles.js";
+import getBookmarkedArticles from "./accounts/getBookmarkedArticles.js";
+import dateScalar from "./scalars/dateScalar.js";
 const resolvers = {
+    Date: dateScalar,
     Query: {
         account: getAccount,
         article: getArticle,
@@ -18,6 +21,7 @@ const resolvers = {
     },
     Account: {
         articles: getAccountArticles,
+        bookmarked_articles: getBookmarkedArticles,
     },
     Article: {
         author: getArticleAuthor,
