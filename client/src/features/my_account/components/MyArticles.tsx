@@ -1,8 +1,8 @@
 import { ApolloError, gql, useQuery } from "@apollo/client";
 import "./MyArticles.styles.sass";
 import { Skeleton } from "@mui/material";
-import Articles from "./Articles";
 import Nosections from "./NoArticles";
+import Articles from "../../../components/Articles/Articles.tsx";
 
 type MyArticlesProps = {
 	id: string;
@@ -52,9 +52,7 @@ export default function MyArticles({ id }: MyArticlesProps) {
 			) : data.account.articles.length == 0 ? (
 				<Nosections />
 			) : (
-				<section id="articles-container">
-					<Articles data={data} />
-				</section>
+				<Articles data={data.account} />
 			)}
 		</section>
 	);

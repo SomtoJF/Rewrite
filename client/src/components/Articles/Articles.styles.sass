@@ -1,0 +1,111 @@
+@use "../../App.sass"
+    
+.articles-container
+        display: grid
+        grid-template-columns: repeat(1, 350px)
+        grid-template-rows: 500px
+        grid-auto-rows: 500px
+        column-gap: 0px
+        row-gap: 0px
+        justify-content: center
+        width: 100%
+        box-sizing: border-box
+
+        .article
+            box-sizing: border-box
+            padding: 10%
+            border: solid 1px App.$charcoal
+            display: grid
+            grid-template-columns: 1fr
+            grid-template-rows: 1fr 6fr 1fr 1fr
+            height: 100%
+            width: 100%
+            &:hover>h3
+                text-decoration: underline
+            #date-tags
+                width: 100%
+                display: flex
+                justify-content: space-between
+                div
+                    width: 50%
+                    overflow: auto
+                    &::-webkit-scrollbar
+                        height: 5px
+                    .ant-tag
+                        cursor: pointer
+            &>*
+                display: block
+                width: 100%
+                overflow: hidden
+                white-space: nowrap
+                text-overflow: ellipsis
+            figure
+                width: 100%
+                height: 100%
+                margin: 0px
+                padding: 0px
+                overflow: hidden
+                display: flex
+                justify-content: center
+                align-items: flex-start
+                img
+                    height: auto
+                    width: 100%
+                    background-color: #fff
+            h3
+                font-family: App.$normal-font
+                font-size: 1.4rem
+                margin: 0px
+                padding: 0px
+                align-self: center
+            p
+                font-family: App.$normal-font
+                margin: 0px
+                padding: 0px
+                font-size: 0.9rem
+                font-weight: 300
+            div
+                font-size: 0.8rem
+                display: flex
+                gap: 2%
+                align-items: center
+                p
+                    font-weight: 300
+                span.bold
+                    font-weight: 600
+ 
+@media all and (min-width: 700px)    
+    .articles-container
+        grid-template-columns: repeat(2, 350px)
+        .article
+            &:nth-child(n+3)
+                border-top: none
+                    
+
+
+@media all and (min-width: 1050px)    
+    .articles-container
+        grid-template-columns: repeat(3, 350px)
+        .article
+            &:nth-child(n + 3)
+                border-top: solid 1px App.$charcoal
+            &:nth-child(n+4)
+                border-top: none
+
+@media all and (min-width: 1400px)    
+    .articles-container
+        grid-template-columns: repeat(4, 350px)
+        .article
+            &:nth-child(n + 3), &:nth-child(n+4)
+                border-top: solid 1px App.$charcoal
+            &:nth-child(n+5)
+                border-top: none
+
+@media all and (min-width: 1750px)    
+    .articles-container
+        grid-template-columns: repeat(5, 350px)
+        .article
+            &:nth-child(n + 3), &:nth-child(n+4), &:nth-child(n+5)
+                border-top: solid 1px App.$charcoal
+            &:nth-child(n+6)
+                border-top: none

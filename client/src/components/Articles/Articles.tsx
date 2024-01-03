@@ -1,13 +1,12 @@
 import { useEffect } from "react";
-import elementIntersectsXAxis from "../../../lib/elementIntersectsXAxis";
+import elementIntersectsXAxis from "../../lib/elementIntersectsXAxis";
 import moment from "moment";
 import { Tag } from "antd";
+import "./Articles.styles.sass";
 
 type ArticleProps = {
 	data: {
-		account: {
-			articles: ArticlesInterface[];
-		};
+		articles: ArticlesInterface[];
 	};
 };
 
@@ -52,8 +51,8 @@ export default function Articles({ data }: ArticleProps) {
 		window.addEventListener("resize", resolveArticleBorderStyles);
 	}, []);
 	return (
-		<>
-			{data.account.articles.map((article, index) => (
+		<section className="articles-container">
+			{data.articles.map((article, index) => (
 				<article key={index} className="article">
 					<div id="date-tags">
 						<p>{moment(article.createdAt).format("DD. MMMM YYYY")}</p>
@@ -88,6 +87,6 @@ export default function Articles({ data }: ArticleProps) {
 					</div>
 				</article>
 			))}
-		</>
+		</section>
 	);
 }
