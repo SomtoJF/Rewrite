@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import elementIntersectsXAxis from "../../../lib/elementIntersectsXAxis";
+import moment from "moment";
+import { Tag } from "antd";
 
 type ArticleProps = {
 	data: {
@@ -16,12 +18,18 @@ type ArticlesInterface = {
 	content?: string;
 	est_read_time: string;
 	thumbnail_url: string | undefined;
-	createdAt?: Date;
+	createdAt: Date;
 	author: {
 		firstname: string;
 		lastname: string;
 		profile_picture: string | undefined;
 	};
+};
+
+const tagStyles = {
+	backgroundColor: "inherit",
+	border: "1px solid #383230",
+	borderRadius: "0px",
 };
 
 const defaultArticleThumbnail =
@@ -47,6 +55,14 @@ export default function Articles({ data }: ArticleProps) {
 		<>
 			{data.account.articles.map((article, index) => (
 				<article key={index} className="article">
+					<div id="date-tags">
+						<p>{moment(article.createdAt).format("DD. MMMM YYYY")}</p>
+						<div>
+							{article.tags.map((tag) => (
+								<Tag style={tagStyles}>{tag}</Tag>
+							))}
+						</div>
+					</div>
 					<figure>
 						<img
 							src={

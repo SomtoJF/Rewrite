@@ -24,9 +24,20 @@
             border: solid 1px App.$charcoal
             display: grid
             grid-template-columns: 1fr
-            grid-template-rows: 5fr 1fr 1fr 1fr
+            grid-template-rows: 1fr 6fr 1fr 1fr
             height: 100%
             width: 100%
+            #date-tags
+                width: 100%
+                display: flex
+                justify-content: space-between
+                div
+                    width: 50%
+                    overflow: auto
+                    &::-webkit-scrollbar
+                        height: 5px
+                    .ant-tag
+                        cursor: pointer
             &>*
                 display: block
                 width: 100%

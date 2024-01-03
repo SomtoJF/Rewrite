@@ -16,6 +16,7 @@ const MY_ARTICLES_QUERY = gql`
 				description
 				est_read_time
 				tags
+				createdAt
 				author {
 					firstname
 					lastname
