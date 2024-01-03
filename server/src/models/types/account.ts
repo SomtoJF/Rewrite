@@ -3,6 +3,7 @@ interface AccountInterface {
 	firstname: string;
 	lastname: string;
 	profile_picture?: string;
+	banner_picture?: string;
 	// IDs of bookmarked articless
 	bookmarked_articles?: string[];
 }
