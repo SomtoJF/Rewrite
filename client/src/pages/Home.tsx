@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import Header from "../features/home/header";
+import Header from "../features/home/Header";
 import "../features/home/Home.style.sass";
 
 export default function Home() {
