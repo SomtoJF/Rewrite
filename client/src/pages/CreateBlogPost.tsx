@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "../features/createBlogPost/CreateBlogPost.styles.sass";
 import BlogPostform from "../features/createBlogPost/components/BlogPostform";
 import BlogPostAside from "../features/createBlogPost/components/BlogPostAside";
@@ -10,6 +10,15 @@ export default function CreateBlogPost() {
 	const [tags, setTags] = useState<string[]>([]);
 	const [thumbnail, setThumbnail] = useState<File>();
 	const [imagesUrl, setImagesUrl] = useState<string[]>([]);
+
+	const payload = {
+		title,
+		description,
+		thumbnail,
+		content,
+		imagesUrl,
+		tags,
+	};
 
 	return (
 		<main id="create-blog-post" className="page">
@@ -33,7 +42,9 @@ export default function CreateBlogPost() {
 			</div>
 			<div id="buttons-container">
 				<button type="button">Preview</button>
-				<button type="submit">Post</button>
+				<button type="submit" onClick={() => console.log(payload)}>
+					Post
+				</button>
 			</div>
 		</main>
 	);

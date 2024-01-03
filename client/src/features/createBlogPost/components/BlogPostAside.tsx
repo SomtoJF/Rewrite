@@ -12,9 +12,9 @@ interface BlogPostAsideProps {
 
 export default function BlogPostAside({
 	setThumbnail,
-	imagesUrl,
-	setImagesUrl,
-}: BlogPostAsideProps) {
+}: // imagesUrl,
+// setImagesUrl,
+BlogPostAsideProps) {
 	const [previewThumbnailUrl, setPreviewThumbnailUrl] = useState("");
 
 	return (
