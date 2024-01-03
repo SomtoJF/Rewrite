@@ -5,7 +5,7 @@ interface AccountInterface {
 	profile_picture?: string;
 	banner_picture?: string;
 	// IDs of bookmarked articless
-	bookmarked_articles?: string[];
+	bookmarked_articles_id?: string[];
 }
 
 export type { AccountInterface };
