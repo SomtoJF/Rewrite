@@ -16,6 +16,7 @@ const ARTICLES_QUERY = gql`
 			author {
 				firstname
 				lastname
+				_id
 			}
 		}
 	}
