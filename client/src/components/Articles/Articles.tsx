@@ -12,6 +12,7 @@ type ArticleProps = {
 };
 
 type ArticlesInterface = {
+	_id: string;
 	title: string;
 	description: string;
 	tags: string[];
@@ -54,13 +55,15 @@ export default function Articles({ data }: ArticleProps) {
 	}, []);
 	return (
 		<section className="articles-container">
-			{data.articles.map((article, index) => (
-				<article key={index} className="article">
+			{data.articles.map((article) => (
+				<article key={article._id} className="article">
 					<div id="date-tags">
 						<p>{moment(article.createdAt).format("DD. MMMM YYYY")}</p>
 						<div>
-							{article.tags.map((tag) => (
-								<Tag style={tagStyles}>{tag}</Tag>
+							{article.tags.map((tag, index) => (
+								<Tag style={tagStyles} key={index + 0.231}>
+									{tag}
+								</Tag>
 							))}
 						</div>
 					</div>

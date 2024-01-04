@@ -13,6 +13,7 @@ const MY_ARTICLES_QUERY = gql`
 	query getMyArticles($id: String!) {
 		account(id: $id) {
 			articles {
+				_id
 				title
 				description
 				est_read_time
