@@ -33,6 +33,7 @@ export default function Account() {
 					firstname={data.account.firstname}
 					lastname={data.account.lastname}
 					profile_picture={data.account.profile_picture}
+					id={id}
 				/>
 				<MyArticles id={id!} />
 			</main>
