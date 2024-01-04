@@ -3,9 +3,8 @@ import { useAuth } from "../../contexts/authContext";
 import "./Navbar.styles.sass";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { Link } from "react-router-dom";
-import useUserData from "../../zustand/useUserData";
 import { ApolloError, gql, useQuery } from "@apollo/client";
-import { useEffect } from "react";
+import { LoadingOutlined } from "@ant-design/icons";
 import NavAvatar from "./NavAvatar";
 import NavDropdown from "./NavDropdown";
 
@@ -22,25 +21,13 @@ const DATA = gql`
 
 export default function Navbar() {
 	const { currentUser } = useAuth();
-	const userData = useUserData((state) => state.userData);
-	const setUserData = useUserData((state) => state.setUserData);
-	const { data, refetch } = useQuery(DATA, {
+	const { data, loading } = useQuery(DATA, {
 		variables: { id: currentUser?.uid },
 		skip: !currentUser,
 		onError: (err: ApolloError) => {
 			throw new Error(err.message);
 		},
-		onCompleted(data) {
-			setUserData(data);
-		},
 	});
-
-	useEffect(() => {
-		if (currentUser) {
-			refetch({ id: currentUser.uid });
-			setUserData(data);
-		}
-	}, [currentUser]);
 
 	return (
 		<nav id="top-nav">
@@ -56,12 +43,14 @@ export default function Navbar() {
 					/>
 				</label>
 			</form>
-			{userData ? (
+			{loading ? (
+				<LoadingOutlined />
+			) : data ? (
 				<NavDropdown>
 					<NavAvatar
-						firstname={userData?.account.firstname}
-						lastname={userData?.account.lastname}
-						profile_picture={userData?.account.profile_picture}
+						firstname={data.account.firstname}
+						lastname={data.account.lastname}
+						profile_picture={data.account.profile_picture}
 					/>
 				</NavDropdown>
 			) : (
