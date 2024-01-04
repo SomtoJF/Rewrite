@@ -5,6 +5,7 @@ import { useAuth } from "../../contexts/authContext";
 import { Link } from "react-router-dom";
 import "./NavDropDown.styles.sass";
 import { useNavigate } from "react-router-dom";
+import { FormOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons";
 
 interface NavDropDownProps {
 	children: ReactElement;
@@ -18,7 +19,10 @@ export default function NavDropdown({ children }: NavDropDownProps) {
 			key: 0,
 			label: (
 				<button className="dropdown-button">
-					<Link to={`/account/${currentUser?.uid}`}>My Account</Link>
+					<Link to={`/account/${currentUser?.uid}`}>
+						<UserOutlined style={{ marginRight: "5px" }} />
+						My Account
+					</Link>
 				</button>
 			),
 		},
@@ -29,7 +33,11 @@ export default function NavDropdown({ children }: NavDropDownProps) {
 			key: "1",
 			label: (
 				<button className="dropdown-button" type="button" onClick={() => {}}>
-					Profile picture
+					<Link to={"/article/create"}>
+						{" "}
+						<FormOutlined style={{ marginRight: "5px" }} />
+						Write an Article
+					</Link>
 				</button>
 			),
 		},
@@ -51,7 +59,7 @@ export default function NavDropdown({ children }: NavDropDownProps) {
 						e.currentTarget.style.color = "red";
 					}}
 				>
-					Logout
+					<LogoutOutlined style={{ marginRight: "5px" }} /> Logout
 				</button>
 			),
 		},
