@@ -32,7 +32,7 @@ const MY_ARTICLES_QUERY = gql`
 
 export default function MyArticles({ id }: MyArticlesProps) {
 	const { currentUser } = useAuth();
-	const currentUserId = currentUser.uid;
+	const currentUserId = currentUser?.uid;
 	const { loading, data } = useQuery(MY_ARTICLES_QUERY, {
 		variables: { id: id },
 		onError: (err: ApolloError) => {
