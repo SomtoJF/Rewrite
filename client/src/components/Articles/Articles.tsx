@@ -52,6 +52,7 @@ export default function Articles({ data }: ArticleProps) {
 	useEffect(() => {
 		resolveArticleBorderStyles();
 		window.addEventListener("resize", resolveArticleBorderStyles);
+		return window.removeEventListener("resize", resolveArticleBorderStyles);
 	}, []);
 	return (
 		<section className="articles-container">
