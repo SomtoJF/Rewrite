@@ -22,6 +22,7 @@ const MY_ARTICLES_QUERY = gql`
 					firstname
 					lastname
 					profile_picture
+					_id
 				}
 			}
 		}

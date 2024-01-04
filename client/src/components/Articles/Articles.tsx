@@ -3,6 +3,7 @@ import elementIntersectsXAxis from "../../lib/elementIntersectsXAxis";
 import moment from "moment";
 import { Tag } from "antd";
 import "./Articles.styles.sass";
+import { Link } from "react-router-dom";
 
 type ArticleProps = {
 	data: {
@@ -22,6 +23,7 @@ type ArticlesInterface = {
 		firstname: string;
 		lastname: string;
 		profile_picture: string | undefined;
+		_id: string;
 	};
 };
 
@@ -80,7 +82,9 @@ export default function Articles({ data }: ArticleProps) {
 							id="author-name"
 							title={`${article.author.firstname} ${article.author.lastname}`}
 						>
-							{article.author.firstname.charAt(0)}. {article.author.lastname}
+							<Link to={`/account/${article.author._id}`}>
+								{article.author.firstname.charAt(0)}. {article.author.lastname}
+							</Link>
 						</p>
 						<span className="bold">Duration</span>
 						<p>{article.est_read_time}</p>
