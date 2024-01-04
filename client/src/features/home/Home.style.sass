@@ -2,15 +2,18 @@
     position: relative 
     cursor: none
     padding-bottom: 10%
-
-
-.circle 
-    position: absolute
-    left: 0
-    top: 0
-    width: 20px
-    height: 20px
-    background: white
-    border-radius: 50%
-    pointer-events: none
-    mix-blend-mode: difference
+    .circle 
+        position: absolute
+        left: 0
+        top: 0
+        width: 20px
+        height: 20px
+        background: white
+        border-radius: 50%
+        pointer-events: none
+        mix-blend-mode: difference
+@media (orientation: portrait) and (max-width: 1000px)
+    #home-page
+        cursor: initial
+        .circle
+            display: none
