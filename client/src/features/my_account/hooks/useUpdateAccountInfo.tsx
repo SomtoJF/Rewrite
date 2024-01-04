@@ -1,5 +1,5 @@
 import { gql, useMutation } from "@apollo/client";
-import useUserData from "../../../zustand/useUserData";
+import { useAuth } from "../../../contexts/authContext";
 
 const MUTATE_PROFILE_PICTURE = gql`
 	mutation MutateProfilePicture(
@@ -20,7 +20,8 @@ type postProfilePictureArgs = {
 
 export default function usePostProfilePicture() {
 	const [mutateProfilePicture] = useMutation(MUTATE_PROFILE_PICTURE);
-	const id = useUserData((state) => state.userData?.account._id);
+	const { currentUser } = useAuth();
+	const id = currentUser.uid;
 
 	const updateAccountInfo = async ({ edits }: postProfilePictureArgs) => {
 		const response = await mutateProfilePicture({

@@ -1,13 +1,14 @@
 import "./NoArticles.styles.sass";
 import { Link } from "react-router-dom";
-import useUserData from "../../../zustand/useUserData";
+import firebase from "firebase/compat/app";
 
 interface props {
 	id: string;
+	currentUser: firebase.User;
 }
 
-export default function Nosections({ id }: props) {
-	const _id = useUserData((state) => state.userData?.account._id);
+export default function Nosections({ id, currentUser }: props) {
+	const _id = currentUser.uid;
 	return (
 		<section id="no-articles">
 			<p>

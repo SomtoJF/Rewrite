@@ -2,7 +2,8 @@ import { Avatar } from "@mui/material";
 import "./Hero.styles.sass";
 import Modal from "./ProfilePictureModal.tsx";
 import { useState } from "react";
-import useUserData from "../../../zustand/useUserData.ts";
+import { useAuth } from "../../../contexts/authContext.tsx";
+// import useUserData from "../../../zustand/useUserData.ts";
 
 interface HeroProps {
 	firstname: string;
@@ -18,8 +19,8 @@ export default function Hero({
 	id,
 }: HeroProps) {
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const currentUserId = useUserData((state) => state.userData?.account._id);
-
+	const { currentUser } = useAuth();
+	const currentUserId = currentUser.uid;
 	return (
 		<>
 			<header id="account-hero">

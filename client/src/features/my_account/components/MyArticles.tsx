@@ -3,7 +3,7 @@ import "./MyArticles.styles.sass";
 import { Skeleton } from "@mui/material";
 import Nosections from "./NoArticles";
 import Articles from "../../../components/Articles/Articles.tsx";
-import useUserData from "../../../zustand/useUserData.ts";
+import { useAuth } from "../../../contexts/authContext.tsx";
 
 type MyArticlesProps = {
 	id: string;
@@ -30,19 +30,17 @@ const MY_ARTICLES_QUERY = gql`
 `;
 
 export default function MyArticles({ id }: MyArticlesProps) {
-	const userData = useUserData((state) => state.userData);
+	const { currentUser } = useAuth();
+	const currentUserId = currentUser.uid;
 	const { loading, data } = useQuery(MY_ARTICLES_QUERY, {
 		variables: { id: id },
 		onError: (err: ApolloError) => {
 			throw new Error(err.message);
 		},
-		onCompleted: (data) => {
-			console.log(data);
-		},
 	});
 	return (
 		<section id="my-articles">
-			<h2>{userData?.account._id === id ? "My Articles" : "Articles"}</h2>
+			<h2>{currentUserId === id ? "My Articles" : "Articles"}</h2>
 			{loading ? (
 				<section id="articles-container">
 					<Skeleton component={"article"} className="productItem" />
@@ -53,7 +51,7 @@ export default function MyArticles({ id }: MyArticlesProps) {
 					<Skeleton component={"article"} className="productItem" />
 				</section>
 			) : data.account.articles.length == 0 ? (
-				<Nosections id={id} />
+				<Nosections id={id} currentUser={currentUser} />
 			) : (
 				<Articles data={data.account} />
 			)}

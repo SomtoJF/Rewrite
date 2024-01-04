@@ -30,9 +30,6 @@ export default function Home() {
 		onError: (error: ApolloError) => {
 			throw new Error(error.message);
 		},
-		onCompleted: (data) => {
-			console.log(data);
-		},
 	});
 
 	function getDimensions(e: MouseEvent) {
