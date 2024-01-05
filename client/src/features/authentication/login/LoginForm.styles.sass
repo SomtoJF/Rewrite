@@ -14,12 +14,14 @@
     label
         color: App.$charcoal
         font-size: 0.8rem
-        &>input
+        border-bottom: solid 1px App.$charcoal
+        &>#password-container
+            display: flex
+        &>input, &>div>input
             display: block
             width: 100%
             height: 30px
             border: none
-            border-bottom: solid 1px App.$charcoal
             background-color: inherit
             outline: none
             padding-left: 0px
@@ -30,7 +32,7 @@
         background-color: App.$white
         color: App.$charcoal
         border: solid 2px App.$charcoal
-        height: 15%
+        height: 40px
         width: max(45%, 100px)
         border-radius: 5px
         align-self: center

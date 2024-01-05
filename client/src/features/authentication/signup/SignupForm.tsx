@@ -7,7 +7,11 @@ import { useMutation } from "@apollo/client";
 import firebase from "firebase/compat/app";
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
-import { LoadingOutlined } from "@ant-design/icons";
+import {
+	LoadingOutlined,
+	EyeInvisibleOutlined,
+	EyeOutlined,
+} from "@ant-design/icons";
 
 export default function SignupForm() {
 	const [email, setEmail] = useState("");
@@ -18,6 +22,7 @@ export default function SignupForm() {
 	// currentUser is just being used as a placeholder for the updated user
 	const { signup, login, currentUser } = useAuth();
 	const [updatedUser, setUpdatedUser] = useState<firebase.User>(currentUser);
+	const [passwordVisible, setPasswordVisible] = useState(false);
 	const navigate = useNavigate();
 	const { enqueueSnackbar } = useSnackbar();
 
@@ -68,7 +73,7 @@ export default function SignupForm() {
 		>
 			<h2>Create a Rewrite account</h2>
 			<label htmlFor="firstname">
-				Firstname*
+				First name*
 				<input
 					type="text"
 					name="firstname"
@@ -83,7 +88,7 @@ export default function SignupForm() {
 				/>
 			</label>
 			<label htmlFor="lastname">
-				Lastname*
+				Last name*
 				<input
 					type="text"
 					name="lastname"
@@ -113,19 +118,29 @@ export default function SignupForm() {
 			</label>
 			<label htmlFor="password">
 				Password*
-				<input
-					type="password"
-					name="password"
-					id="password"
-					required
-					minLength={6}
-					title="Password must be at least 6 characters"
-					value={password}
-					placeholder="Enter your password"
-					onChange={(e) => {
-						setPassword(e.target.value);
-					}}
-				/>
+				<div id="password-container">
+					<input
+						type={passwordVisible ? "text" : "password"}
+						name="password"
+						id="password"
+						required
+						minLength={6}
+						title="Password must be at least 6 characters"
+						value={password}
+						placeholder="Enter your password"
+						onChange={(e) => {
+							setPassword(e.target.value);
+						}}
+					/>
+					<button
+						type="button"
+						onClick={() => {
+							setPasswordVisible(!passwordVisible);
+						}}
+					>
+						{!passwordVisible ? <EyeOutlined /> : <EyeInvisibleOutlined />}
+					</button>
+				</div>
 			</label>
 			<button type="submit" disabled={loading}>
 				{loading ? <LoadingOutlined /> : "submit"}
