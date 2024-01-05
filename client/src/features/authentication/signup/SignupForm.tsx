@@ -68,12 +68,12 @@ export default function SignupForm() {
 		>
 			<h2>Create a Rewrite account</h2>
 			<label htmlFor="firstname">
-				Firstname
+				Firstname*
 				<input
 					type="text"
 					name="firstname"
 					id="firstname"
-					placeholder="John"
+					placeholder="Enter your first name"
 					value={firstname}
 					required
 					maxLength={25}
@@ -83,12 +83,12 @@ export default function SignupForm() {
 				/>
 			</label>
 			<label htmlFor="lastname">
-				Lastname
+				Lastname*
 				<input
 					type="text"
 					name="lastname"
 					id="lastname"
-					placeholder="Doe"
+					placeholder="Enter last name"
 					value={lastname}
 					required
 					maxLength={25}
@@ -98,12 +98,12 @@ export default function SignupForm() {
 				/>
 			</label>
 			<label htmlFor="email">
-				Email
+				Email*
 				<input
 					type="email"
 					name="email"
 					id="email"
-					placeholder="email@email.com"
+					placeholder="Enter your email"
 					value={email}
 					required
 					onChange={(e) => {
@@ -112,7 +112,7 @@ export default function SignupForm() {
 				/>
 			</label>
 			<label htmlFor="password">
-				Password
+				Password*
 				<input
 					type="password"
 					name="password"
@@ -121,6 +121,7 @@ export default function SignupForm() {
 					minLength={6}
 					title="Password must be at least 6 characters"
 					value={password}
+					placeholder="Enter your password"
 					onChange={(e) => {
 						setPassword(e.target.value);
 					}}

@@ -6,13 +6,13 @@
     justify-content: space-between
     min-height: 50%
     width: 100%
-    gap: 10px
+    gap: 30px
 
     h2
         text-align: center
         color: App.$clay
     label
-        color: App.$clay
+        color: App.$charcoal
         font-size: 0.8rem
         &>input
             display: block
@@ -24,7 +24,7 @@
             outline: none
             padding-left: 0px
             font-weight: 600
-            font-size: 1.2rem
+            font-size: 0.8rem
             color: App.$charcoal
     button[type="submit"]
         background-color: App.$white
@@ -34,8 +34,10 @@
         width: max(45%, 100px)
         align-self: center
         padding: 10px 0px
-        margin-top: 10%
-        transition: 0.5s
+        border-radius: 5px
+        -webkit-box-shadow: 7px 5px 0px 0px rgba(56,50,48,1)
+        -moz-box-shadow: 7px 5px 0px 0px rgba(56,50,48,1)
+        box-shadow: 5px 5px 0px 0px rgba(56,50,48,1)
         &:hover
             color: App.$white
             background-color: App.$charcoal
