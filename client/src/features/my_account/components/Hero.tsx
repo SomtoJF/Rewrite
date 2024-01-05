@@ -3,7 +3,6 @@ import "./Hero.styles.sass";
 import Modal from "./ProfilePictureModal.tsx";
 import { useState } from "react";
 import { useAuth } from "../../../contexts/authContext.tsx";
-// import useUserData from "../../../zustand/useUserData.ts";
 
 interface HeroProps {
 	firstname: string;
