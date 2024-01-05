@@ -19,7 +19,7 @@ export default function Hero({
 }: HeroProps) {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const { currentUser } = useAuth();
-	const currentUserId = currentUser.uid;
+	const currentUserId = currentUser ? currentUser.uid : undefined;
 	return (
 		<>
 			<header id="account-hero">
