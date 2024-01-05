@@ -7,6 +7,7 @@ import { ApolloError, gql, useQuery } from "@apollo/client";
 import { LoadingOutlined } from "@ant-design/icons";
 import NavAvatar from "./NavAvatar";
 import NavDropdown from "./NavDropdown";
+import MobileMenu from "./MobileMenu";
 
 const DATA = gql`
 	query getData($id: String!) {
@@ -63,6 +64,7 @@ export default function Navbar() {
 					</button>
 				</div>
 			)}
+			{!loading && <MobileMenu />}
 		</nav>
 	);
 }
