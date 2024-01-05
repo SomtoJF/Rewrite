@@ -1,6 +1,5 @@
 import { useState, FormEvent, useEffect } from "react";
 import { useAuth } from "../../../contexts/authContext";
-import Loader from "../../../components/Loader";
 import "./SignupForm.styles.sass";
 import { auth } from "../../../Firebase/firebase";
 import CREATE_ACCOUNT_MUTATION from "../../../services/authentication/createAccount";
@@ -8,6 +7,7 @@ import { useMutation } from "@apollo/client";
 import firebase from "firebase/compat/app";
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
+import { LoadingOutlined } from "@ant-design/icons";
 
 export default function SignupForm() {
 	const [email, setEmail] = useState("");
@@ -126,7 +126,9 @@ export default function SignupForm() {
 					}}
 				/>
 			</label>
-			{loading ? <Loader /> : <button type="submit">submit</button>}
+			<button type="submit" disabled={loading}>
+				{loading ? <LoadingOutlined /> : "submit"}
+			</button>
 		</form>
 	);
 }
