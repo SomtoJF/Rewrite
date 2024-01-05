@@ -1,0 +1,38 @@
+@use "../../App"
+
+#nav-mobile-drawer
+    .ant-drawer-header
+        padding: 20px 7.5%
+    .ant-drawer-header-title
+        display: flex
+        flex-direction: row-reverse
+        font-family: App.$block-font
+        .ant-drawer-title
+            font-weight: 900
+        font-weight: bold
+        .ant-drawer-close
+            margin: 0px
+    .ant-drawer-body
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        padding: 5% 7.5%
+        gap: 10px
+        &>button
+            display: flex
+            align-items: center
+            gap: 10px
+            height: 15%
+            padding-left: 0px
+            padding-bottom: 10px
+            font-size: 1.5rem
+            width: 100%
+            text-align: left
+            color: grey
+            border-bottom: solid 1px App.$charcoal
+            &:hover
+                color: App.$charcoal
+            a
+                display: inline-block
+                width: 100%
+                color: inherit
