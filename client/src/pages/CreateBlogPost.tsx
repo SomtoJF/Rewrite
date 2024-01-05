@@ -27,6 +27,7 @@ export default function CreateBlogPost() {
 	const [messageApi, contextHolder] = message.useMessage();
 	const [loading, setLoading] = useState(false);
 	const navigate = useNavigate();
+	const [isPreviewMode, setIsPreviewMode] = useState(false);
 
 	const error = (message: string) => {
 		messageApi.open({
@@ -86,21 +87,31 @@ export default function CreateBlogPost() {
 			{contextHolder}
 			<main id="create-blog-post" className="page">
 				<h1>Write a new post</h1>
-				<div id="create-blog-form-container">
-					<BlogPostform
-						title={title}
-						setTitle={setTitle}
-						description={description}
-						setDescription={setDescription}
-						content={content}
-						setContent={setContent}
-						tags={tags}
-						setTags={setTags}
-					/>
-					<BlogPostAside setThumbnail={setThumbnail} />
-				</div>
+				{isPreviewMode ? null : (
+					<div id="create-blog-form-container">
+						<BlogPostform
+							title={title}
+							setTitle={setTitle}
+							description={description}
+							setDescription={setDescription}
+							content={content}
+							setContent={setContent}
+							tags={tags}
+							setTags={setTags}
+						/>
+						<BlogPostAside setThumbnail={setThumbnail} />
+					</div>
+				)}
+
 				<div id="buttons-container">
-					<button type="button">Preview</button>
+					<button
+						type="button"
+						onClick={() => {
+							setIsPreviewMode(!isPreviewMode);
+						}}
+					>
+						{isPreviewMode ? "Editor Mode" : "Preview Mode"}
+					</button>
 					<button
 						type="submit"
 						disabled={loading}
