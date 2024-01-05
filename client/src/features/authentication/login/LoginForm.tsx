@@ -1,7 +1,6 @@
 import { FormEvent, useState } from "react";
 import { useAuth } from "../../../contexts/authContext";
 import "./LoginForm.styles.sass";
-import Loader from "../../../components/Loader";
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { LoadingOutlined } from "@ant-design/icons";
