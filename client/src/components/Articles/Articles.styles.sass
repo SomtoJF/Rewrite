@@ -33,7 +33,7 @@
                 display: flex
                 justify-content: space-between
                 div
-                    width: 50%
+                    max-width: 50%
                     overflow: auto
                     &::-webkit-scrollbar
                         height: 5px
@@ -97,10 +97,7 @@
                 img
                     height: 100%
                     width: 100%
-            #date-tags
-                div
-                    width: 40%
- 
+        
 @media all and (min-width: 700px)    
     .articles-container
         grid-template-columns: repeat(2, 350px)
