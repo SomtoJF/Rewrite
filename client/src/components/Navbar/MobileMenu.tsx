@@ -4,6 +4,7 @@ import {
 	MenuOutlined,
 	UserOutlined,
 	ArrowRightOutlined,
+	HomeOutlined,
 } from "@ant-design/icons";
 import { useState } from "react";
 import { Drawer } from "antd";
@@ -43,19 +44,24 @@ export default function MobileMenu({ currentUser }: PropsInterface) {
 				id="nav-mobile-drawer"
 				height={"60%"}
 			>
+				<button onClick={onClose}>
+					<HomeOutlined />
+					<Link to={"/"}>Home</Link>
+				</button>
 				{currentUser ? (
 					<>
-						<button>
+						<button onClick={onClose}>
 							<UserOutlined />
 							<Link to={`/account/${currentUser.uid}`}>My Account</Link>
 						</button>
-						<button>
+						<button onClick={onClose}>
 							<FormOutlined />
 							<Link to="/article/create">Write an Article</Link>
 						</button>
 						<button
 							onClick={() => {
 								logout();
+								onClose();
 							}}
 							style={{ color: "red" }}
 						>
@@ -65,11 +71,11 @@ export default function MobileMenu({ currentUser }: PropsInterface) {
 					</>
 				) : (
 					<>
-						<button>
+						<button onClick={onClose}>
 							<Link to="/login">Login</Link>
 							<ArrowRightOutlined />
 						</button>
-						<button>
+						<button onClick={onClose}>
 							<Link to="/signup">Signup</Link>
 							<ArrowRightOutlined />
 						</button>

@@ -4,6 +4,7 @@ import "./LoginForm.styles.sass";
 import Loader from "../../../components/Loader";
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
+import { LoadingOutlined } from "@ant-design/icons";
 
 export default function LoginForm() {
 	const [email, setEmail] = useState("");
@@ -62,7 +63,9 @@ export default function LoginForm() {
 					}}
 				/>
 			</label>
-			{loading ? <Loader /> : <button type="submit">submit</button>}
+			<button type="submit" disabled={loading}>
+				{loading ? <LoadingOutlined /> : "submit"}
+			</button>
 		</form>
 	);
 }
