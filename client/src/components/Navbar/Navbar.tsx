@@ -64,7 +64,7 @@ export default function Navbar() {
 					</button>
 				</div>
 			)}
-			{!loading && <MobileMenu />}
+			{!loading && <MobileMenu currentUser={currentUser} />}
 		</nav>
 	);
 }
