@@ -1,5 +1,5 @@
 import { ChangeEvent } from "react";
-import { useSnackbar } from "notistack";
+import { message } from "antd";
 
 interface InputFileUploadProps {
 	setThumbnail: (value: File) => void;
@@ -10,13 +10,19 @@ export default function InputFileUpload({
 	setThumbnail,
 	setPreviewThumbnail,
 }: InputFileUploadProps) {
-	const { enqueueSnackbar } = useSnackbar();
+	const [messageApi, contextHolder] = message.useMessage();
+
+	const error = (message: string) => {
+		messageApi.open({
+			type: "error",
+			content: message,
+		});
+	};
+
 	const inputChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
 		if (e.target && e.target.files) {
 			if (e.target.files[0].size > 2097152) {
-				enqueueSnackbar("Image too large, max size is 2MB", {
-					variant: "error",
-				});
+				error("Image too large, max size is 2MB");
 				e.target.files = null;
 				throw new Error("File size exceeded limit of 2MB");
 			}
@@ -27,17 +33,20 @@ export default function InputFileUpload({
 	};
 
 	return (
-		<button>
-			<input
-				type="file"
-				name="image-uploader"
-				id="image-uploader"
-				multiple={false}
-				accept="image/*"
-				onChange={(e) => {
-					inputChangeHandler(e);
-				}}
-			/>
-		</button>
+		<>
+			{contextHolder}
+			<button>
+				<input
+					type="file"
+					name="image-uploader"
+					id="image-uploader"
+					multiple={false}
+					accept="image/*"
+					onChange={(e) => {
+						inputChangeHandler(e);
+					}}
+				/>
+			</button>
+		</>
 	);
 }
