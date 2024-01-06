@@ -138,7 +138,11 @@ export default function SignupForm() {
 							setPasswordVisible(!passwordVisible);
 						}}
 					>
-						{!passwordVisible ? <EyeOutlined /> : <EyeInvisibleOutlined />}
+						{!passwordVisible ? (
+							<EyeOutlined color="#383230" />
+						) : (
+							<EyeInvisibleOutlined color="#383230" />
+						)}
 					</button>
 				</div>
 			</label>
