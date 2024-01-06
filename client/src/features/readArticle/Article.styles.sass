@@ -1,4 +1,35 @@
 @use "../../App"
 
 #article-page
-    padding: 7.5vh 5%
+    padding: 7.5vh 15%
+    box-sizing: border-box
+    font-family: App.$normal-font
+    h1,h2,h3,h4,h5,h6
+        font-family: App.$block-font
+    code
+        background-color: App.$light-grey
+        display: block
+        padding: 10px
+    a
+        color: App.$orange
+        text-decoration: none
+        &:hover
+            text-decoration: underline
+    img
+        max-width: 100%
+        height: auto
+    // *
+        // white-space: pre-wrap
+
+    
+@media all and (max-width: 800px) 
+    #article-page
+        padding: 7.5vh 10%
+
+@media all and (max-width: 550) 
+    #article-page
+        padding: 7.5vh 5%
+    
+
+
+        
