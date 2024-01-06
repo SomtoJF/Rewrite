@@ -65,6 +65,7 @@ export default function Home() {
 		<div className="page" id="home-page">
 			<div className="circle" ref={cursorRef} />
 			<Header />
+			<h3 id="recent-articles">RECENT ARTICLES</h3>
 			{!loading && <Articles data={data} />}
 		</div>
 	);

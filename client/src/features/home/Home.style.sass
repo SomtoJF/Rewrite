@@ -1,7 +1,12 @@
+@use "../../App"
+
 #home-page  
     position: relative 
     cursor: none
     padding-bottom: 10%
+    &>h3
+        padding: App.$horizontal-padding
+        font-family: App.$block-font
     .circle 
         position: absolute
         left: 0
