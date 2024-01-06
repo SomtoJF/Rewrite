@@ -39,13 +39,15 @@ const defaultArticleThumbnail =
 
 export default function Articles({ data }: ArticleProps) {
 	const resolveArticleBorderStyles = () => {
-		const articles = document.querySelectorAll(
-			".article"
-		) as NodeListOf<HTMLElement>;
-		for (let i = 1; i < articles.length; i++) {
-			articles[i].style.borderLeft = "solid 1px #383230";
-			if (elementIntersectsXAxis(articles[i], articles[i - 1])) {
-				articles[i].style.borderLeft = "none";
+		if (window.innerWidth > 699) {
+			const articles = document.querySelectorAll(
+				".article"
+			) as NodeListOf<HTMLElement>;
+			for (let i = 1; i < articles.length; i++) {
+				articles[i].style.borderLeft = "solid 1px #383230";
+				if (elementIntersectsXAxis(articles[i], articles[i - 1])) {
+					articles[i].style.borderLeft = "none";
+				}
 			}
 		}
 	};
