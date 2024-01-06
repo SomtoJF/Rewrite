@@ -59,8 +59,12 @@ export default function Articles({ data }: ArticleProps) {
 	return (
 		<section className="articles-container">
 			{data.articles.map((article) => (
-				<Link to={`/article/${article._id}`} className="article-link">
-					<article key={article._id} className="article">
+				<Link
+					to={`/article/${article._id}`}
+					key={article._id}
+					className="article-link"
+				>
+					<article className="article">
 						<div id="date-tags">
 							<p>{moment(article.createdAt).format("DD. MMMM YYYY")}</p>
 							<div>
