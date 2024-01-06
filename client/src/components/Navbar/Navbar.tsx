@@ -4,7 +4,7 @@ import "./Navbar.styles.sass";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { Link } from "react-router-dom";
 import { ApolloError, gql, useQuery } from "@apollo/client";
-import { LoadingOutlined } from "@ant-design/icons";
+import { LoadingOutlined, MenuOutlined } from "@ant-design/icons";
 import NavAvatar from "./NavAvatar";
 import NavDropdown from "./NavDropdown";
 import MobileMenu from "./MobileMenu";
@@ -66,11 +66,15 @@ export default function Navbar() {
 			)}
 			{!loading && (
 				<MobileMenu currentUser={currentUser}>
-					<NavAvatar
-						firstname={data.account.firstname}
-						lastname={data.account.lastname}
-						profile_picture={data.account.profile_picture}
-					/>
+					{data ? (
+						<NavAvatar
+							firstname={data.account.firstname}
+							lastname={data.account.lastname}
+							profile_picture={data.account.profile_picture}
+						/>
+					) : (
+						<MenuOutlined />
+					)}
 				</MobileMenu>
 			)}
 		</nav>
