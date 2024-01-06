@@ -9,6 +9,7 @@ import Layout from "./Layout";
 import Account from "./pages/Account";
 import Error from "./components/Error/Error";
 import CreateBlogPost from "./pages/CreateBlogPost";
+import Article from "./pages/Article";
 
 const client = new ApolloClient({
 	uri: import.meta.env.VITE_REACT_APP_BACKEND_URL,
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
 					},
 					{
 						path: ":id",
-						element: <></>,
+						element: <Article />,
 					},
 				],
 			},
