@@ -64,7 +64,15 @@ export default function Navbar() {
 					</button>
 				</div>
 			)}
-			{!loading && <MobileMenu currentUser={currentUser} />}
+			{!loading && (
+				<MobileMenu currentUser={currentUser}>
+					<NavAvatar
+						firstname={data.account.firstname}
+						lastname={data.account.lastname}
+						profile_picture={data.account.profile_picture}
+					/>
+				</MobileMenu>
+			)}
 		</nav>
 	);
 }

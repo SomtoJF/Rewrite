@@ -1,12 +1,11 @@
 import {
 	FormOutlined,
 	LogoutOutlined,
-	MenuOutlined,
 	UserOutlined,
 	ArrowRightOutlined,
 	HomeOutlined,
 } from "@ant-design/icons";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { Drawer } from "antd";
 import firebase from "firebase/compat/app";
 import "./MobileMenu.styles.sass";
@@ -15,9 +14,10 @@ import { useAuth } from "../../contexts/authContext";
 
 interface PropsInterface {
 	currentUser: firebase.User | undefined;
+	children: ReactNode;
 }
 
-export default function MobileMenu({ currentUser }: PropsInterface) {
+export default function MobileMenu({ currentUser, children }: PropsInterface) {
 	const [open, setOpen] = useState(false);
 	const { logout } = useAuth();
 
@@ -32,7 +32,7 @@ export default function MobileMenu({ currentUser }: PropsInterface) {
 	return (
 		<>
 			<button id="mobile-menu" onClick={showDrawer}>
-				<MenuOutlined />
+				{children}
 			</button>
 			<Drawer
 				title="REWRITE BLOG"
