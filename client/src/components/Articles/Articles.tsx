@@ -3,7 +3,7 @@ import elementIntersectsXAxis from "../../lib/elementIntersectsXAxis";
 import moment from "moment";
 import { Tag } from "antd";
 import "./Articles.styles.sass";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 type ArticleProps = {
 	data: {
@@ -38,8 +38,6 @@ const defaultArticleThumbnail =
 	"https://ucarecdn.com/ec09d892-c584-4f98-9a0f-debb55667488/-/preview/500x500/-/quality/smart_retina/-/format/auto/";
 
 export default function Articles({ data }: ArticleProps) {
-	const navigate = useNavigate();
-
 	const resolveArticleBorderStyles = () => {
 		if (window.innerWidth > 699) {
 			const articles = document.querySelectorAll(
