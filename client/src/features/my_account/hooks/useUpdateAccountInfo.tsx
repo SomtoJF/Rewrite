@@ -8,13 +8,15 @@ const MUTATE_PROFILE_PICTURE = gql`
 	) {
 		updateAccount(id: $updateAccountId, edits: $edits) {
 			profile_picture
+			banner_picture
 		}
 	}
 `;
 
-type postProfilePictureArgs = {
+type mutateAccountInfoArgs = {
 	edits: {
-		profile_picture: string;
+		profile_picture?: string;
+		banner_picture?: string;
 	};
 };
 
@@ -23,7 +25,7 @@ export default function usePostProfilePicture() {
 	const { currentUser } = useAuth();
 	const id = currentUser.uid;
 
-	const updateAccountInfo = async ({ edits }: postProfilePictureArgs) => {
+	const updateAccountInfo = async ({ edits }: mutateAccountInfoArgs) => {
 		const response = await mutateProfilePicture({
 			variables: { updateAccountId: id, edits: edits },
 			onError: (err: any) => {
