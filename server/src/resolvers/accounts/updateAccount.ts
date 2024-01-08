@@ -8,7 +8,8 @@ async function updateAccount(_: any, args: UpdateAccountResolverArgs) {
 	if (args.edits.lastname) accountDetails.lastname = args.edits.lastname;
 	if (args.edits.profile_picture)
 		accountDetails.profile_picture = args.edits.profile_picture;
-
+	if (args.edits.banner_picture)
+		accountDetails.banner_picture = args.edits.banner_picture;
 	try {
 		const response = await accountDetails.save();
 		return response;

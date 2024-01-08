@@ -13,6 +13,7 @@ type UpdateAccountResolverArgs = {
 		firstname?: string;
 		lastname?: string;
 		profile_picture?: string;
+		banner_picture?: string;
 	};
 };
 

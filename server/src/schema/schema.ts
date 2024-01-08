@@ -64,7 +64,7 @@ input UpdateArticleArgs{
 
 type Mutation{
     createAccount(account: CreateAccountArgs!): Account
-    updateAccount(id: String!, edits: UpdateAccountArgs): Account
+    updateAccount(id: String!, edits: UpdateAccountArgs!): Account
     deleteAccount(id: String!): Account
     createArticle(article: CreateArticleArgs!): Article
     deleteArticle(id: String!): Article
