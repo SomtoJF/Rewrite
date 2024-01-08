@@ -1,6 +1,5 @@
 import { ChangeEvent, ReactElement, useState } from "react";
-import { Modal, Image } from "antd";
-import { useSnackbar } from "notistack";
+import { Modal, Image, message } from "antd";
 import usePostProfilePicture from "../hooks/useUpdateAccountInfo";
 import fallback from "../../../lib/fallbackImage";
 import uploadImage from "../../../lib/uploadImage";
@@ -10,14 +9,29 @@ type props = {
 	setOpen: (value: boolean) => void;
 	trigger: ReactElement;
 	title: string;
+	currentUserId: string;
 };
 
-const MyModal = ({ open, setOpen, trigger, title }: props) => {
+const MyModal = ({ open, setOpen, trigger, title, currentUserId }: props) => {
 	const [confirmLoading, setConfirmLoading] = useState(false);
 	const [newDisplayPicture, setNewDisplayPicture] = useState<File>();
 	const [previewImageUrl, setPreviewImageUrl] = useState("");
-	const { enqueueSnackbar } = useSnackbar();
-	const { updateAccountInfo } = usePostProfilePicture();
+	const [messageApi, contextHolder] = message.useMessage();
+	const { updateAccountInfo } = usePostProfilePicture(currentUserId);
+
+	const success = (text: string) => {
+		messageApi.open({
+			type: "success",
+			content: text,
+		});
+	};
+
+	const error = (text: string) => {
+		messageApi.open({
+			type: "error",
+			content: text,
+		});
+	};
 
 	const showModal = () => {
 		setOpen(true);
@@ -36,12 +50,10 @@ const MyModal = ({ open, setOpen, trigger, title }: props) => {
 			await updateAccountInfo({
 				edits: { profile_picture: profilePictureCdn },
 			});
-			enqueueSnackbar("Upload successful", { variant: "success" });
+			success("Upload successful");
 			window.location.reload();
 		} catch (err: any) {
-			enqueueSnackbar("We couldn't upload your profile picture", {
-				variant: "error",
-			});
+			error("We couldn't upload your profile picture");
 			throw new Error(err.error);
 		} finally {
 			setConfirmLoading(false);
@@ -52,9 +64,7 @@ const MyModal = ({ open, setOpen, trigger, title }: props) => {
 	const inputChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
 		if (e.target && e.target.files) {
 			if (e.target.files[0].size > 2097152) {
-				enqueueSnackbar("Image too large, max size is 2MB", {
-					variant: "error",
-				});
+				error("Please maintain a file max size of 2MB");
 				e.target.files = null;
 				throw new Error("File size exceeded limit of 2MB");
 			}
@@ -66,6 +76,7 @@ const MyModal = ({ open, setOpen, trigger, title }: props) => {
 
 	return (
 		<>
+			{contextHolder}
 			<div onClick={showModal}>{trigger}</div>
 			<Modal
 				title={title}

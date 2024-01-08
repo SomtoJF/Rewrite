@@ -41,6 +41,11 @@ export default function Banner({
 
 	const handleBannerOnChange = (e: ChangeEvent<HTMLInputElement>) => {
 		if (!e.target.files) throw new Error("There is no file to be displayed.");
+		if (e.target.files[0].size > 2097152) {
+			error("Please maintain a file max size of 2MB");
+			e.target.files = null;
+			throw new Error("File size exceeded limit of 2MB");
+		}
 		setNewBannerFile(e.target.files[0]);
 		setDisplayedBannerPicture(URL.createObjectURL(e.target.files[0]));
 		setLocalBannerPicture(true);
