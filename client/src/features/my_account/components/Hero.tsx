@@ -34,6 +34,7 @@ export default function Hero({
 							open={isModalOpen}
 							setOpen={setIsModalOpen}
 							title="Upload new profile picture"
+							currentUserId={currentUserId}
 							trigger={
 								<Avatar
 									sx={{

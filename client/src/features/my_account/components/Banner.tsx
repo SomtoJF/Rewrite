@@ -21,7 +21,7 @@ export default function Banner({
 		useState(banner_picture);
 	const [newBannerFile, setNewBannerFile] = useState<File>();
 	const [messageApi, contextHolder] = message.useMessage();
-	const { updateAccountInfo } = usePostProfilePicture();
+	const { updateAccountInfo } = usePostProfilePicture(currentUserId);
 	const [loading, setLoading] = useState(false);
 	const { id } = useParams();
 

@@ -1,10 +1,9 @@
-import { gql, useMutation } from "@apollo/client";
-import { useAuth } from "../../../contexts/authContext";
+import { ApolloError, gql, useMutation } from "@apollo/client";
 
 const MUTATE_PROFILE_PICTURE = gql`
 	mutation MutateProfilePicture(
 		$updateAccountId: String!
-		$edits: UpdateAccountArgs
+		$edits: UpdateAccountArgs!
 	) {
 		updateAccount(id: $updateAccountId, edits: $edits) {
 			profile_picture
@@ -20,16 +19,16 @@ type mutateAccountInfoArgs = {
 	};
 };
 
-export default function usePostProfilePicture() {
+export default function usePostProfilePicture(
+	currentUserId: string | undefined
+) {
 	const [mutateProfilePicture] = useMutation(MUTATE_PROFILE_PICTURE);
-	const { currentUser } = useAuth();
-	const id = currentUser.uid;
 
 	const updateAccountInfo = async ({ edits }: mutateAccountInfoArgs) => {
 		const response = await mutateProfilePicture({
-			variables: { updateAccountId: id, edits: edits },
-			onError: (err: any) => {
-				throw new Error(err);
+			variables: { updateAccountId: currentUserId, edits: edits },
+			onError: (err: ApolloError) => {
+				throw new Error(err.message);
 			},
 			onCompleted(data) {
 				console.log(data);
