@@ -28,10 +28,6 @@ const articleSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
-    images: {
-        type: [String],
-        required: false,
-    },
 }, { timestamps: true });
 const Article = mongoose.model("Article", articleSchema, "articles");
 export default Article;

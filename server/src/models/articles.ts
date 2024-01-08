@@ -31,10 +31,6 @@ const articleSchema = new mongoose.Schema<ArticleInterface>(
 			type: String,
 			required: false,
 		},
-		images: {
-			type: [String],
-			required: false,
-		},
 	},
 	{ timestamps: true }
 );

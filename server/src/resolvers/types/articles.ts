@@ -8,6 +8,7 @@ type CreateArticleResolverArgs = {
 		title: string;
 		description: string;
 		content: string;
+		thumbnail_url: string;
 		tags?: string[];
 	};
 };
@@ -18,6 +19,7 @@ type UpdateArticleResolverArgs = {
 		title?: string;
 		description?: string;
 		content?: string;
+		thumbnail_url?: string;
 		tags?: string[];
 	};
 };

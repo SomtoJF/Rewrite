@@ -25,7 +25,6 @@ type Article{
     related_articles: [Article!]
     est_read_time: String!
     thumbnail_url: String
-    images: [String!]
     createdAt: Date!
     updatedAt: Date!
 }
@@ -52,7 +51,6 @@ input CreateArticleArgs{
     content: String!
     tags: [String!]!
     thumbnail_url: String
-    images: [String!]
 }
 
 input UpdateArticleArgs{
