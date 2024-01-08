@@ -3,11 +3,13 @@ import "./Hero.styles.sass";
 import Modal from "./ProfilePictureModal.tsx";
 import { useState } from "react";
 import { useAuth } from "../../../contexts/authContext.tsx";
+import Banner from "./Banner.tsx";
 
 interface HeroProps {
 	firstname: string;
 	lastname: string;
 	profile_picture: string | undefined;
+	banner_picture: string | undefined;
 	id: string | undefined;
 }
 
@@ -15,15 +17,17 @@ export default function Hero({
 	firstname,
 	lastname,
 	profile_picture,
+	banner_picture,
 	id,
 }: HeroProps) {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const { currentUser } = useAuth();
 	const currentUserId = currentUser ? currentUser.uid : undefined;
+
 	return (
 		<>
 			<header id="account-hero">
-				<div />
+				<Banner banner_picture={banner_picture} currentUserId={currentUserId} />
 				<div>
 					{currentUserId === id ? (
 						<Modal
