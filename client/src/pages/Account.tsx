@@ -10,6 +10,7 @@ const ACCOUNT_QUERY = gql`
 			firstname
 			lastname
 			profile_picture
+			banner_picture
 			articles {
 				title
 				description
@@ -30,6 +31,7 @@ export default function Account() {
 		return (
 			<main className="page">
 				<Hero
+					banner_picture={data.account.banner_picture}
 					firstname={data.account.firstname}
 					lastname={data.account.lastname}
 					profile_picture={data.account.profile_picture}
