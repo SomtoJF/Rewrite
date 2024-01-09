@@ -54,7 +54,7 @@ export default function MyArticles({ id }: MyArticlesProps) {
 			) : data.account.articles.length == 0 ? (
 				<Nosections id={id} currentUser={currentUser} />
 			) : (
-				<Articles data={data.account} />
+				<Articles data={data.account.articles} />
 			)}
 		</section>
 	);

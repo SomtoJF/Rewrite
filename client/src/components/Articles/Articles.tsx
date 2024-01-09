@@ -6,9 +6,7 @@ import "./Articles.styles.sass";
 import { Link } from "react-router-dom";
 
 type ArticleProps = {
-	data: {
-		articles: ArticlesInterface[];
-	};
+	data: ArticlesInterface[];
 };
 
 type ArticlesInterface = {
@@ -58,7 +56,7 @@ export default function Articles({ data }: ArticleProps) {
 	}, []);
 	return (
 		<section className="articles-container">
-			{data.articles.map((article) => (
+			{data.map((article) => (
 				<Link
 					to={`/article/${article._id}`}
 					key={article._id}
