@@ -1,6 +1,7 @@
 import { Divider, Spin } from "antd";
 import Articles from "../../../components/Articles/Articles";
 import { gql, useQuery } from "@apollo/client";
+import "./RelatedArticles.styles.sass";
 
 interface RelatedArticlesProps {
 	id: string;
@@ -16,6 +17,7 @@ const RELATED_ARTICLES_QUERY = gql`
 				est_read_time
 				thumbnail_url
 				createdAt
+				description
 				author {
 					firstname
 					lastname
@@ -38,7 +40,7 @@ export default function RelatedArticles({ id }: RelatedArticlesProps) {
 		},
 	});
 	return (
-		<section>
+		<section id="related-articles">
 			<h1>RelatedArticles</h1>
 			<Divider />
 			{loading ? <Spin /> : <Articles data={data.article.related_articles} />}
