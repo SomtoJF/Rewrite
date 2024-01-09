@@ -73,8 +73,10 @@ export default function Header({
 				</div>
 			</div>
 			<div id="tags-container">
-				{tags.map((tag) => (
-					<Tag style={tagStyles}>{tag}</Tag>
+				{tags.map((tag, index) => (
+					<Tag key={index + 0.25} style={tagStyles}>
+						{tag}
+					</Tag>
 				))}
 			</div>
 		</header>
