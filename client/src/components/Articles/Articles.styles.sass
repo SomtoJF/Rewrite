@@ -1,10 +1,10 @@
-@use "../../App.sass"
+@use "../../App"
     
 .articles-container
         display: grid
         grid-template-columns: repeat(1, 350px)
-        grid-template-rows: 500px
-        grid-auto-rows: 500px
+        grid-template-rows: 450px
+        grid-auto-rows: 450px
         column-gap: 0px
         row-gap: 0px
         justify-content: center
@@ -74,6 +74,8 @@
                 padding: 0px
                 font-size: 0.9rem
                 font-weight: 300
+                height: fit-content
+                line-height: 45px
             div
                 font-size: 0.8rem
                 display: flex
@@ -88,12 +90,12 @@
     .articles-container
         padding: 0px 5%
         grid-template-columns: 1fr
-        grid-template-rows: 25vh
-        grid-auto-rows: 25vh
+        grid-template-rows: 22vh
+        grid-auto-rows: 22vh
         .article
             &:last-child
                 border-bottom: none
-            border-top: none
+            border-top: solid 1px App.$charcoal
             border-left: none
             border-right: none
             padding: max(2%, 20px) 2%
