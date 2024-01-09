@@ -6,6 +6,7 @@ import rehypeRaw from "rehype-raw";
 import { Spin } from "antd";
 import "../features/readArticle/Article.styles.sass";
 import Header from "../features/readArticle/components/Header";
+import RelatedArticles from "../features/readArticle/components/RelatedArticles";
 
 const ARTICLE_QUERY = gql`
 	query ArticleQuery($id: String!) {
@@ -31,9 +32,6 @@ export default function Article() {
 	const { id } = useParams();
 	const { data, loading } = useQuery(ARTICLE_QUERY, {
 		variables: { id: id },
-		onCompleted(data) {
-			console.log(data);
-		},
 	});
 	return (
 		<main id="article-page">
@@ -53,6 +51,7 @@ export default function Article() {
 					<Markdown rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
 						{data.article.content}
 					</Markdown>
+					<RelatedArticles id={id!} />
 				</>
 			) : (
 				<Spin spinning={loading} fullscreen />
