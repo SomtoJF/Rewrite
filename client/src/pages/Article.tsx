@@ -49,7 +49,7 @@ export default function Article() {
 						authorId={data.article.author._id}
 						profile_picture={data.article.author.profile_picture}
 					/>
-					<MenuDropDown authorId={data.article.author._id!} />
+					<MenuDropDown authorId={data.article.author._id} articleId={id!} />
 					<Markdown rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
 						{data.article.content}
 					</Markdown>
