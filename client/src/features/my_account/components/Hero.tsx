@@ -40,7 +40,7 @@ export default function Hero({
 									sx={{
 										width: "max(100px, 10vw)",
 										height: "max(100px, 10vw)",
-										border: "1px solid #383230",
+										border: "5px solid #f4f4f4",
 									}}
 									src={profile_picture}
 								>
@@ -54,12 +54,12 @@ export default function Hero({
 							sx={{
 								width: "max(100px, 10vw)",
 								height: "max(100px, 10vw)",
-								border: "1px solid #383230",
+								border: "5px solid #f4f4f4",
 							}}
 							src={profile_picture}
 						>
 							{" "}
-							{`${firstname.charAt(0)} ${lastname.charAt(0)}`}
+							{`${firstname.charAt(0)}${lastname.charAt(0)}`}
 						</Avatar>
 					)}
 
