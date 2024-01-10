@@ -18,7 +18,7 @@ export default function NavAvatar({
 		>
 			<span title={`${firstname} ${lastname}`}>{`${firstname.charAt(
 				0
-			)} ${lastname.charAt(0)}`}</span>
+			)}${lastname.charAt(0)}`}</span>
 		</Avatar>
 	);
 }
