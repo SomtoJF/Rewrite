@@ -45,8 +45,8 @@ export default function Articles({ data }: ArticleProps) {
 	}, []);
 	return (
 		<section className="articles-container">
-			{data.map((article) => (
-				<ArticleCard article={article} />
+			{data.map((article, index) => (
+				<ArticleCard key={data[index]._id} article={article} />
 			))}
 		</section>
 	);
