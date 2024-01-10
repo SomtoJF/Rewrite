@@ -13,6 +13,7 @@ const ARTICLES_QUERY = gql`
 			est_read_time
 			tags
 			createdAt
+			thumbnail_url
 			author {
 				firstname
 				lastname

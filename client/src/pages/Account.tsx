@@ -17,6 +17,7 @@ const ACCOUNT_QUERY = gql`
 				est_read_time
 				tags
 				createdAt
+				thumbnail_url
 			}
 		}
 	}
