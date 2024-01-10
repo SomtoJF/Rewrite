@@ -41,7 +41,7 @@ export default function RelatedArticles({ id }: RelatedArticlesProps) {
 	});
 	return (
 		<section id="related-articles">
-			<h1>RelatedArticles</h1>
+			<h1>Related Articles</h1>
 			<Divider />
 			{loading ? <Spin /> : <Articles data={data.article.related_articles} />}
 		</section>
