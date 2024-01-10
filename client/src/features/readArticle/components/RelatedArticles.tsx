@@ -35,9 +35,6 @@ export default function RelatedArticles({ id }: RelatedArticlesProps) {
 		onError(error) {
 			throw new Error(error.message);
 		},
-		onCompleted(data) {
-			console.log(data);
-		},
 	});
 	return (
 		<section id="related-articles">
