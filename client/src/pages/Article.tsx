@@ -7,6 +7,7 @@ import { Spin } from "antd";
 import "../features/readArticle/Article.styles.sass";
 import Header from "../features/readArticle/components/Header";
 import RelatedArticles from "../features/readArticle/components/RelatedArticles";
+import MenuDropDown from "../features/readArticle/components/MenuDropDown";
 
 const ARTICLE_QUERY = gql`
 	query ArticleQuery($id: String!) {
@@ -48,6 +49,7 @@ export default function Article() {
 						authorId={data.article.author._id}
 						profile_picture={data.article.author.profile_picture}
 					/>
+					<MenuDropDown authorId={data.article.author._id!} />
 					<Markdown rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
 						{data.article.content}
 					</Markdown>
