@@ -1,4 +1,9 @@
-import { BookOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import {
+	BookOutlined,
+	DeleteOutlined,
+	EditOutlined,
+	ShareAltOutlined,
+} from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Dropdown, message } from "antd";
 import { MoreVertOutlined } from "@mui/icons-material";
@@ -74,12 +79,35 @@ const MenuDropDown = ({ authorId, articleId }: MenuDropDownProps) => {
 		},
 		{
 			label: (
+				<button
+					className="dropdown-item"
+					onClick={() => {
+						try {
+							navigator.clipboard.writeText(window.location.href);
+							success("Copied to clipboard");
+						} catch (e: any) {
+							error("An error occurred");
+							throw new Error(e);
+						}
+					}}
+				>
+					<ShareAltOutlined />
+					Share
+				</button>
+			),
+			key: "1",
+		},
+		{
+			type: "divider",
+		},
+		{
+			label: (
 				<button className="dropdown-item" disabled={authorId !== currentUserId}>
 					<EditOutlined />
 					Edit
 				</button>
 			),
-			key: "1",
+			key: "2",
 			disabled: authorId !== currentUserId,
 		},
 		{
@@ -99,7 +127,7 @@ const MenuDropDown = ({ authorId, articleId }: MenuDropDownProps) => {
 				</button>
 			),
 			danger: true,
-			key: "2",
+			key: "3",
 			disabled: authorId !== currentUserId,
 		},
 	];
