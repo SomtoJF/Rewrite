@@ -42,6 +42,7 @@ input UpdateAccountArgs{
     lastname: String
     profile_picture: String
     banner_picture: String
+    bookmarked_articles_id: [String!]
 }
 
 input CreateArticleArgs{
