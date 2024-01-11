@@ -16,6 +16,7 @@ type mutateAccountInfoArgs = {
 	edits: {
 		profile_picture?: string;
 		banner_picture?: string;
+		bookmarked_articles_id?: string[];
 	};
 };
 

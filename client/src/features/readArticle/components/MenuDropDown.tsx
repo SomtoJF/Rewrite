@@ -1,4 +1,5 @@
 import {
+	BookFilled,
 	BookOutlined,
 	DeleteOutlined,
 	EditOutlined,
@@ -9,13 +10,23 @@ import { Dropdown, message } from "antd";
 import { MoreVertOutlined } from "@mui/icons-material";
 import "./MenuDropdown.styles.sass";
 import { useAuth } from "../../../contexts/authContext";
-import { ApolloError, gql, useMutation } from "@apollo/client";
+import { ApolloError, gql, useMutation, useQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import usePostProfilePicture from "../../../hooks/useUpdateAccountInfo";
 
 interface MenuDropDownProps {
 	authorId: string;
 	articleId: string;
 }
+
+const GET_ARTICLES_ID_QUERY = gql`
+	query GetBookMarkedArticlesId($accountId: String!) {
+		account(id: $accountId) {
+			bookmarked_articles_id
+		}
+	}
+`;
 
 const DELETE_ARTICLE_MUTATION = gql`
 	mutation DeleteArticle($deleteArticleId: String!) {
@@ -28,8 +39,10 @@ const DELETE_ARTICLE_MUTATION = gql`
 const MenuDropDown = ({ authorId, articleId }: MenuDropDownProps) => {
 	const { currentUser } = useAuth();
 	const currentUserId = currentUser ? currentUser.uid : null;
+	const { updateAccountInfo } = usePostProfilePicture(currentUserId);
 	const navigate = useNavigate();
 	const [messageApi, contextHolder] = message.useMessage();
+	const [bookmarkedArticles, setBookmarkedArticles] = useState<string[]>([]);
 
 	const success = (text: string) => {
 		messageApi.open({
@@ -45,6 +58,13 @@ const MenuDropDown = ({ authorId, articleId }: MenuDropDownProps) => {
 		});
 	};
 
+	useQuery(GET_ARTICLES_ID_QUERY, {
+		variables: { accountId: currentUserId },
+		onCompleted(data) {
+			setBookmarkedArticles(data.account.bookmarked_articles_id);
+		},
+	});
+
 	const [deleteArticle] = useMutation(DELETE_ARTICLE_MUTATION, {
 		variables: { deleteArticleId: articleId },
 		onCompleted: () => {
@@ -59,17 +79,63 @@ const MenuDropDown = ({ authorId, articleId }: MenuDropDownProps) => {
 		},
 	});
 
+	const AddArticleToBookmarks = async (articleId: string) => {
+		try {
+			const updatedBookmarks = bookmarkedArticles.concat(articleId);
+			await updateAccountInfo({
+				edits: {
+					bookmarked_articles_id: updatedBookmarks,
+				},
+			});
+			setBookmarkedArticles(updatedBookmarks);
+			success("Article Saved");
+		} catch (err: any) {
+			error("error saving article");
+			throw new Error(err);
+		}
+	};
+
+	const RemoveArticleFromBookmarks = async (articleId: string) => {
+		try {
+			const updatedBookmarks = bookmarkedArticles.filter(
+				(article) => article !== articleId
+			);
+			await updateAccountInfo({
+				edits: {
+					bookmarked_articles_id: updatedBookmarks,
+				},
+			});
+			setBookmarkedArticles(updatedBookmarks);
+			success("Article removed from bookmarks");
+		} catch (err: any) {
+			error("We couldn't unsave this article");
+			throw new Error(err);
+		}
+	};
+
 	const items: MenuProps["items"] = [
 		{
 			label: (
 				<button
 					className="dropdown-item"
-					onClick={() => {
+					onClick={async () => {
 						if (!currentUserId) navigate("/login");
+						if (bookmarkedArticles.includes(articleId)) {
+							RemoveArticleFromBookmarks(articleId);
+						} else {
+							AddArticleToBookmarks(articleId);
+						}
 					}}
 				>
-					<BookOutlined />
-					Save
+					{bookmarkedArticles.includes(articleId) ? (
+						<>
+							<BookFilled /> Saved
+						</>
+					) : (
+						<>
+							<BookOutlined /> Save
+						</>
+					)}
 				</button>
 			),
 			key: "0",
