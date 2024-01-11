@@ -34,19 +34,12 @@ const ACCOUNT_QUERY = gql`
 	}
 `;
 
-const onChange = (key: string) => {
-	console.log(key);
-};
-
 export default function Account() {
 	const { id } = useParams();
 	const { currentUser } = useAuth();
 	const currentUserId = currentUser?.uid;
 	const { error, loading, data } = useQuery(ACCOUNT_QUERY, {
 		variables: { id: id },
-		onCompleted(data) {
-			console.log(data);
-		},
 	});
 	const items: TabsProps["items"] = [
 		{
@@ -89,7 +82,6 @@ export default function Account() {
 					<Tabs
 						defaultActiveKey="1"
 						items={items}
-						onChange={onChange}
 						tabBarStyle={{
 							width: "100%",
 							paddingLeft: "7.5%",
