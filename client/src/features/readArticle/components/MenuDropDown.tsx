@@ -108,7 +108,7 @@ const MenuDropDown = ({ authorId, articleId }: MenuDropDownProps) => {
 		<>
 			{contextHolder}
 			<Dropdown menu={{ items }} placement="bottom" trigger={["click"]}>
-				<button type="button">
+				<button type="button" style={{ color: "#383230" }}>
 					<MoreVertOutlined style={{ fontWeight: 700 }} />
 				</button>
 			</Dropdown>
