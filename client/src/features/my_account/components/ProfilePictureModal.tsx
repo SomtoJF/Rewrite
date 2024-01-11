@@ -1,6 +1,6 @@
 import { ChangeEvent, ReactElement, useState } from "react";
 import { Modal, Image, message } from "antd";
-import usePostProfilePicture from "../hooks/useUpdateAccountInfo";
+import usePostProfilePicture from "../../../hooks/useUpdateAccountInfo";
 import fallback from "../../../lib/fallbackImage";
 import uploadImage from "../../../lib/uploadImage";
 

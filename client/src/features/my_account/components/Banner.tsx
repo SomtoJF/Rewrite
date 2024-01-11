@@ -4,7 +4,7 @@ import { Button, message } from "antd";
 import "./Banner.styles.sass";
 import { useParams } from "react-router-dom";
 import uploadImage from "../../../lib/uploadImage";
-import usePostProfilePicture from "../hooks/useUpdateAccountInfo";
+import usePostProfilePicture from "../../../hooks/useUpdateAccountInfo";
 
 interface PropsInterface {
 	banner_picture: string | undefined;
