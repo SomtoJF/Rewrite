@@ -6,6 +6,7 @@ import Error from "../components/Error/Error";
 import { Tabs, Spin } from "antd";
 import type { TabsProps } from "antd";
 import Articles from "../components/Articles/Articles";
+import { useAuth } from "../contexts/authContext";
 
 const ACCOUNT_QUERY = gql`
 	query AccountQuery($id: String!) {
@@ -39,6 +40,8 @@ const onChange = (key: string) => {
 
 export default function Account() {
 	const { id } = useParams();
+	const { currentUser } = useAuth();
+	const currentUserId = currentUser?.uid;
 	const { error, loading, data } = useQuery(ACCOUNT_QUERY, {
 		variables: { id: id },
 		onCompleted(data) {
@@ -82,13 +85,20 @@ export default function Account() {
 					profile_picture={data.account.profile_picture}
 					id={id}
 				/>
-				<Tabs
-					defaultActiveKey="1"
-					items={items}
-					onChange={onChange}
-					// style={{ width: "100%", paddingLeft: "7.5%" }}
-					tabBarStyle={{ width: "100%", paddingLeft: "7.5%", color: "#383230" }}
-				/>
+				{currentUserId === id ? (
+					<Tabs
+						defaultActiveKey="1"
+						items={items}
+						onChange={onChange}
+						tabBarStyle={{
+							width: "100%",
+							paddingLeft: "7.5%",
+							color: "#383230",
+						}}
+					/>
+				) : (
+					<MyArticles id={id!} />
+				)}
 			</main>
 		);
 	}
