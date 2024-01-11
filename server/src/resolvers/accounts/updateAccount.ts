@@ -10,6 +10,8 @@ async function updateAccount(_: any, args: UpdateAccountResolverArgs) {
 		accountDetails.profile_picture = args.edits.profile_picture;
 	if (args.edits.banner_picture)
 		accountDetails.banner_picture = args.edits.banner_picture;
+	if (args.edits.bookmarked_articles_id)
+		accountDetails.bookmarked_articles_id = args.edits.bookmarked_articles_id;
 	try {
 		const response = await accountDetails.save();
 		return response;

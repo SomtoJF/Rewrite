@@ -14,6 +14,7 @@ type UpdateAccountResolverArgs = {
 		lastname?: string;
 		profile_picture?: string;
 		banner_picture?: string;
+		bookmarked_articles_id?: string[];
 	};
 };
 
