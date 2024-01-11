@@ -7,6 +7,7 @@ import { Tabs, Spin } from "antd";
 import type { TabsProps } from "antd";
 import Articles from "../components/Articles/Articles";
 import { useAuth } from "../contexts/authContext";
+import "../features/my_account/Account.styles.sass";
 
 const ACCOUNT_QUERY = gql`
 	query AccountQuery($id: String!) {
@@ -70,7 +71,7 @@ export default function Account() {
 	];
 	if (!loading) {
 		return (
-			<main className="page">
+			<main className="page" id="account-page">
 				<Hero
 					banner_picture={data.account.banner_picture}
 					firstname={data.account.firstname}
@@ -85,7 +86,7 @@ export default function Account() {
 						tabBarStyle={{
 							width: "100%",
 							paddingLeft: "7.5%",
-							color: "#383230",
+							color: "grey",
 						}}
 					/>
 				) : (
