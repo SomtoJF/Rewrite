@@ -8,6 +8,9 @@ import uploadImage from "../lib/uploadImage";
 import { useNavigate } from "react-router-dom";
 import { LoadingOutlined } from "@ant-design/icons";
 import { message } from "antd";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 
 const CREATE_ARTICLE_QUERY = gql`
 	mutation createArticle($article: CreateArticleArgs!) {
@@ -87,7 +90,15 @@ export default function CreateBlogPost() {
 			{contextHolder}
 			<main id="create-blog-post" className="page">
 				<h1>Write a new post</h1>
-				{isPreviewMode ? null : (
+				{isPreviewMode ? (
+					<>
+						<p id="preview-container">
+							<Markdown rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
+								{content}
+							</Markdown>
+						</p>
+					</>
+				) : (
 					<div id="create-blog-form-container">
 						<BlogPostform
 							title={title}
