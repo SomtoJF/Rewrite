@@ -20,14 +20,21 @@
         gap: 20px
         button
             display: block
-            background-color: App.$clay
+            background-color: App.$white
             padding: 10px
             border-radius: 5px
-            color: App.$white
-            width: 100px
+            color: App.$charcoal
+            width: fit-content
+            min-width: 100px
+            border: solid 2px App.$charcoal
+            -webkit-box-shadow: 7px 5px 0px 0px rgba(56,50,48,1)
+            -moz-box-shadow: 7px 5px 0px 0px rgba(56,50,48,1)
+            box-shadow: 5px 5px 0px 0px rgba(56,50,48,1)
             &:hover
-                background-color: lighten(App.$clay, 10)
+                background-color: darken(App.$white, 10)
+            &:active
+                box-shadow: none
             &[type="submit"]
-                background-color: App.$charcoal
+                background-color: App.$orange
                 &:hover
-                    background-color: lighten(App.$charcoal, 10)
+                    background-color: lighten(App.$orange, 10)
