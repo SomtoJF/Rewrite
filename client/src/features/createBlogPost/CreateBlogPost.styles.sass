@@ -38,3 +38,10 @@
                 background-color: App.$orange
                 &:hover
                     background-color: lighten(App.$orange, 10)
+
+@media all and (max-width: 900px) 
+    #create-blog-post > div
+        flex-direction: column
+        align-items: center
+        &>*
+            width: 100%
