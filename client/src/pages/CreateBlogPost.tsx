@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../features/createBlogPost/CreateBlogPost.styles.sass";
 import BlogPostform from "../features/createBlogPost/components/BlogPostform";
 import BlogPostAside from "../features/createBlogPost/components/BlogPostAside";
@@ -11,6 +11,7 @@ import { message } from "antd";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
+import storageAvailable from "../lib/storageAvailable";
 
 const CREATE_ARTICLE_QUERY = gql`
 	mutation createArticle($article: CreateArticleArgs!) {
@@ -35,6 +36,13 @@ export default function CreateBlogPost() {
 	const error = (message: string) => {
 		messageApi.open({
 			type: "error",
+			content: message,
+		});
+	};
+
+	const success = (message: string) => {
+		messageApi.open({
+			type: "success",
 			content: message,
 		});
 	};
@@ -85,6 +93,32 @@ export default function CreateBlogPost() {
 		}
 	};
 
+	const handleSaveDraft = () => {
+		if (storageAvailable("localStorage")) {
+			localStorage.setItem("title", title);
+			localStorage.setItem("description", description);
+			localStorage.setItem("content", content);
+			success("Saved to draft");
+		} else {
+			error("We couldn't save draft");
+		}
+	};
+
+	useEffect(() => {
+		if (storageAvailable("localStorage")) {
+			if (localStorage.getItem("title") !== null) {
+				setTitle(localStorage.getItem("title")!);
+			}
+			if (localStorage.getItem("description") !== null) {
+				setDescription(localStorage.getItem("description")!);
+			}
+			if (localStorage.getItem("content") !== null) {
+				setContent(localStorage.getItem("content")!);
+			}
+			success("Content pulled from draft");
+		}
+	}, []);
+
 	return (
 		<>
 			{contextHolder}
@@ -122,6 +156,9 @@ export default function CreateBlogPost() {
 						}}
 					>
 						{isPreviewMode ? "Editor Mode" : "Preview Mode"}
+					</button>
+					<button type="button" onClick={handleSaveDraft}>
+						Save Draft
 					</button>
 					<button
 						type="submit"
