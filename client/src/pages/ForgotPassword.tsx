@@ -1,17 +1,22 @@
 import Logo from "../components/Logo";
 import LeftAside from "../features/authentication/components/LeftAside";
 import RightAside from "../features/authentication/components/RightAside";
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useEffect } from "react";
 import { useAuth } from "../contexts/authContext";
 import { message } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
+import useFormName from "../features/authentication/hooks/useFormName";
 
 export default function ForgotPassword() {
 	const { resetPassword } = useAuth();
 	const [email, setEmail] = useState("");
 	const [loading, setLoading] = useState(false);
 	const [messageApi, contextHolder] = message.useMessage();
+	const setActiveFormName = useFormName((state) => state.setActiveFormName);
 
+	useEffect(() => {
+		setActiveFormName("signup");
+	});
 	const error = (message: string) => {
 		messageApi.open({
 			type: "error",

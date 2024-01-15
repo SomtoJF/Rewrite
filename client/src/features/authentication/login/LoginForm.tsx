@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 import { useAuth } from "../../../contexts/authContext";
 import "./LoginForm.styles.sass";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import {
 	LoadingOutlined,
@@ -82,6 +82,7 @@ export default function LoginForm() {
 					</button>
 				</div>
 			</label>
+			<Link to={"/forgot-password"}>Forgot password?</Link>
 			<button type="submit" disabled={loading}>
 				{loading ? <LoadingOutlined /> : "submit"}
 			</button>

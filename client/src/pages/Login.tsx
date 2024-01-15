@@ -12,7 +12,7 @@ export default function Login() {
 
 	useEffect(() => {
 		setActiveFormName("login");
-	});
+	}, []);
 
 	return (
 		<main id="login-page" className="auth-page">

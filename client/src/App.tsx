@@ -10,6 +10,7 @@ import Account from "./pages/Account";
 import Error from "./components/Error/Error";
 import CreateBlogPost from "./pages/CreateBlogPost";
 import Article from "./pages/Article";
+import ForgotPassword from "./pages/ForgotPassword";
 
 const client = new ApolloClient({
 	uri: import.meta.env.VITE_REACT_APP_BACKEND_URL,
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
 	{
 		path: "/signup",
 		element: <Signup />,
+	},
+	{
+		path: "/forgot-password",
+		element: <ForgotPassword />,
 	},
 ]);
 
