@@ -3,6 +3,7 @@ import { auth } from "../Firebase/firebase";
 import {
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
+	sendPasswordResetEmail,
 } from "firebase/auth";
 import firebase from "firebase/compat/app";
 
@@ -11,6 +12,7 @@ interface authContext {
 	signup: any;
 	login: any;
 	logout: any;
+	resetPassword: any;
 }
 
 const AuthContext = createContext<authContext>({
@@ -18,6 +20,7 @@ const AuthContext = createContext<authContext>({
 	signup: null,
 	login: null,
 	logout: null,
+	resetPassword: null,
 });
 
 const useAuth = () => useContext(AuthContext);
@@ -63,6 +66,10 @@ function AuthProvider({ children }: any) {
 		}
 	};
 
+	const resetPassword = async (email: string) => {
+		return sendPasswordResetEmail(auth, email);
+	};
+
 	useEffect(() => {
 		const unsubscribe = auth.onAuthStateChanged((user: any) => {
 			setCurrentUser(user);
@@ -75,6 +82,7 @@ function AuthProvider({ children }: any) {
 		signup,
 		login,
 		logout,
+		resetPassword,
 	};
 	return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
