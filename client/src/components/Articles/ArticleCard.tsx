@@ -30,6 +30,9 @@ const tagStyles = {
 const defaultArticleThumbnail =
 	"https://ucarecdn.com/ec09d892-c584-4f98-9a0f-debb55667488/-/preview/500x500/-/quality/smart_retina/-/format/auto/";
 
+const optimizationParams =
+	"/-/preview/500x500/-/quality/smart_retina/-/format/auto/";
+
 export default function ArticleCard({ article }: CardProps) {
 	const thumbnail = article.thumbnail_url
 		? article.thumbnail_url
@@ -51,8 +54,10 @@ export default function ArticleCard({ article }: CardProps) {
 						))}
 					</div>
 				</div>
-				<figure style={{ backgroundImage: `url(${thumbnail})` }}>
-					<img src={thumbnail} alt={article.title} />
+				<figure
+					style={{ backgroundImage: `url(${thumbnail}${optimizationParams})` }}
+				>
+					<img src={thumbnail + optimizationParams} alt={article.title} />
 				</figure>
 				<h3 title={article.title}>{article.title}</h3>
 				<p>{article.description}</p>
