@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import Header from "../features/home/Header";
 import "../features/home/Home.style.sass";
 import { ApolloError, gql, useQuery } from "@apollo/client";
