@@ -41,13 +41,6 @@ export default function Navbar() {
 		});
 	};
 
-	// const success = (message: string) => {
-	// 	messageApi.open({
-	// 		type: "success",
-	// 		content: message,
-	// 	});
-	// };
-
 	const handleSubmit = async (e: FormEvent) => {
 		e.preventDefault();
 		error("This feature is still under development");

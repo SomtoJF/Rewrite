@@ -2,23 +2,7 @@
 
 #home-page  
     position: relative 
-    cursor: none
     padding-bottom: 10%
     &>h3
         padding: App.$horizontal-padding
         font-family: App.$block-font
-    .circle 
-        position: absolute
-        left: 0
-        top: 0
-        width: 20px
-        height: 20px
-        background: white
-        border-radius: 50%
-        pointer-events: none
-        mix-blend-mode: difference
-@media (orientation: portrait) and (max-width: 1000px)
-    #home-page
-        cursor: initial
-        .circle
-            display: none
