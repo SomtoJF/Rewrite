@@ -87,7 +87,7 @@ export default function Account() {
 						items={items}
 						tabBarStyle={{
 							width: "100%",
-							paddingLeft: "7.5%",
+							paddingLeft: "5%",
 							color: "grey",
 						}}
 					/>
