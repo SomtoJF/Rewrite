@@ -71,9 +71,11 @@ export default function Hero({
 						<div id="name-tooltip">
 							<p id="account-usersname">{`${firstname} ${lastname}`}</p>
 
-							<Tooltip title="Tap on stuff to edit">
-								<QuestionCircleOutlined style={{ color: "grey" }} />
-							</Tooltip>
+							{currentUserId === id ? (
+								<Tooltip title="Tap on stuff to edit">
+									<QuestionCircleOutlined style={{ color: "grey" }} />
+								</Tooltip>
+							) : null}
 						</div>
 						<Bio bio={bio} id={id} />
 					</div>
