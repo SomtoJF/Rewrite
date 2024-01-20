@@ -16,7 +16,7 @@ interface props {
 const { TextArea } = Input;
 
 export default function Bio({ bio, id }: props) {
-	const [edit, setEdit] = useState(true);
+	const [edit, setEdit] = useState(false);
 	const { currentUser } = useAuth();
 	const currentUserId = currentUser ? currentUser.uid : undefined;
 	const [bioInputText, setBioInputText] = useState(bio);

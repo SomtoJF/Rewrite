@@ -16,6 +16,7 @@ const ACCOUNT_QUERY = gql`
 			lastname
 			profile_picture
 			banner_picture
+			bio
 			bookmarked_articles {
 				_id
 				title
@@ -78,6 +79,7 @@ export default function Account() {
 					lastname={data.account.lastname}
 					profile_picture={data.account.profile_picture}
 					id={id}
+					bio={data.account.bio}
 				/>
 				{currentUserId === id ? (
 					<Tabs
