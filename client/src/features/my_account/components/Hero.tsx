@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useAuth } from "../../../contexts/authContext.tsx";
 import Banner from "./Banner.tsx";
 import Bio from "./Bio.tsx";
+import { Tooltip } from "antd";
+import { QuestionCircleOutlined } from "@ant-design/icons";
 
 interface HeroProps {
 	firstname: string;
@@ -66,7 +68,13 @@ export default function Hero({
 						</Avatar>
 					)}
 					<div>
-						<p id="account-usersname">{`${firstname} ${lastname}`}</p>
+						<div id="name-tooltip">
+							<p id="account-usersname">{`${firstname} ${lastname}`}</p>
+
+							<Tooltip title="Tap on stuff to edit">
+								<QuestionCircleOutlined style={{ color: "grey" }} />
+							</Tooltip>
+						</div>
 						<Bio bio={bio} id={id} />
 					</div>
 				</div>

@@ -83,9 +83,9 @@ export default function Bio({ bio, id }: props) {
 				<>
 					<TextArea
 						showCount
-						count={{ show: true, max: 300 }}
+						count={{ show: true, max: 500 }}
 						onChange={onChange}
-						placeholder="Let people know who you are"
+						placeholder="500 character limit is small once you start to add icons..."
 						value={bioInputText}
 						style={{
 							height: 120,
