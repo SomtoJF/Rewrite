@@ -5,7 +5,8 @@
     box-sizing: border-box
     &>div:nth-child(2)
         display: flex
-        align-items: center
+        flex-direction: column
+        justify-content: center
         position: relative
         z-index: 2
         gap: 20px   
@@ -13,8 +14,33 @@
         margin-left: 5%
         img
             cursor: pointer
-        p
+        p#account-usersname
+            margin: 0px
             font-weight: bold
             font-size: 1.2rem
             cursor: not-allowed
             mix-blend-mode: difference
+        #bio
+            cursor: pointer
+        .bio-markdown-container
+            font-size: 0.8rem
+        #bio-alter-container
+            display: flex
+            gap: 20px
+            margin-top: 20px
+            button
+                background-color: App.$white
+                color: App.$charcoal
+                border: solid 2px App.$charcoal
+                height: 30px
+                width: 80px
+                border-radius: 5px
+                align-self: center
+                -webkit-box-shadow: 3px 3px 0px 0px rgba(56,50,48,1)
+                -moz-box-shadow: 3px 3px 0px 0px rgba(56,50,48,1)
+                box-shadow: 3px 3px 0px 0px rgba(56,50,48,1)
+                &:first-child
+                    background-color: lighten(App.$orange, 10)
+                &:active
+                    box-shadow: none
+                    

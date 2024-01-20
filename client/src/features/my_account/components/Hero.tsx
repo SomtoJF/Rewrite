@@ -4,6 +4,7 @@ import Modal from "./ProfilePictureModal.tsx";
 import { useState } from "react";
 import { useAuth } from "../../../contexts/authContext.tsx";
 import Banner from "./Banner.tsx";
+import Bio from "./Bio.tsx";
 
 interface HeroProps {
 	firstname: string;
@@ -11,6 +12,7 @@ interface HeroProps {
 	profile_picture: string | undefined;
 	banner_picture: string | undefined;
 	id: string | undefined;
+	bio: string | undefined;
 }
 
 export default function Hero({
@@ -19,6 +21,7 @@ export default function Hero({
 	profile_picture,
 	banner_picture,
 	id,
+	bio,
 }: HeroProps) {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const { currentUser } = useAuth();
@@ -62,8 +65,10 @@ export default function Hero({
 							{`${firstname.charAt(0)}${lastname.charAt(0)}`}
 						</Avatar>
 					)}
-
-					<p>{`${firstname} ${lastname}`}</p>
+					<div>
+						<p id="account-usersname">{`${firstname} ${lastname}`}</p>
+						<Bio bio={bio} id={id} />
+					</div>
 				</div>
 			</header>
 		</>
