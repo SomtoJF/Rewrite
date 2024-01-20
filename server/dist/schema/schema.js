@@ -8,6 +8,7 @@ type Account{
     profile_picture: String
     banner_picture: String
     articles: [Article!]
+    bio: String
     bookmarked_articles_id: [String]
     bookmarked_articles: [Article!]
     createdAt: Date!
@@ -34,6 +35,7 @@ input CreateAccountArgs{
     firstname: String!
     lastname: String!
     profile_picture: String
+    bio: String
     banner_picture: String
 }
 
@@ -42,6 +44,7 @@ input UpdateAccountArgs{
     lastname: String
     profile_picture: String
     banner_picture: String
+    bio: String
     bookmarked_articles_id: [String!]
 }
 

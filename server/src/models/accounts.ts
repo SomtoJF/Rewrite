@@ -27,6 +27,10 @@ const accountSchema = new mongoose.Schema<AccountInterface>(
 			type: [String],
 			required: false,
 		},
+		bio: {
+			type: String,
+			required: false,
+		},
 	},
 	{ timestamps: true }
 );

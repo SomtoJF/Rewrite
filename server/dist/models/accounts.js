@@ -24,6 +24,10 @@ const accountSchema = new mongoose.Schema({
         type: [String],
         required: false,
     },
+    bio: {
+        type: String,
+        required: false,
+    },
 }, { timestamps: true });
 const Account = mongoose.model("Account", accountSchema, "accounts");
 export default Account;
